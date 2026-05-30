@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Standalone PHPUnit configuration for the golden-master characterization suite.
+	This suite is WordPress-free and only needs Composer's autoloader.
+
+	Run:  ./vendor/bin/phpunit -c phpunit-golden.xml.dist
+-->
+<phpunit
+	bootstrap="tests/golden/bootstrap.php"
+	colors="true"
+	beStrictAboutTestsThatDoNotTestAnything="true"
+	failOnWarning="true"
+	failOnRisky="true"
+>
+	<testsuites>
+		<testsuite name="golden-master">
+			<directory suffix="-master.php">tests/golden</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
