@@ -1,0 +1,139 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "methods.inc",
+        "root": "{{ROOT}}",
+        "uses": {
+            "methods": [
+                {
+                    "name": "static_method",
+                    "class": "\\My_Class",
+                    "static": true,
+                    "line": 3,
+                    "end_line": 3
+                },
+                {
+                    "name": "update",
+                    "class": "$wpdb",
+                    "static": false,
+                    "line": 5,
+                    "end_line": 5
+                }
+            ]
+        },
+        "functions": [
+            {
+                "name": "test",
+                "namespace": "global",
+                "aliases": [],
+                "line": 7,
+                "end_line": 11,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "another_method",
+                            "class": "\\Another_Class",
+                            "static": true,
+                            "line": 8,
+                            "end_line": 8
+                        },
+                        {
+                            "name": "call_method",
+                            "class": "get_class()",
+                            "static": false,
+                            "line": 10,
+                            "end_line": 10
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "name": "get_class",
+                            "line": 10,
+                            "end_line": 10
+                        }
+                    ]
+                }
+            }
+        ],
+        "classes": [
+            {
+                "name": "My_Class",
+                "namespace": "global",
+                "line": 13,
+                "end_line": 21,
+                "final": false,
+                "abstract": false,
+                "extends": "\\Parent_Class",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "static_method",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 15,
+                        "end_line": 20,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "do_static_stuff",
+                                    "class": "\\Another_Class",
+                                    "static": true,
+                                    "line": 16,
+                                    "end_line": 16
+                                },
+                                {
+                                    "name": "do_stuff",
+                                    "class": "\\My_Class",
+                                    "static": true,
+                                    "line": 17,
+                                    "end_line": 17
+                                },
+                                {
+                                    "name": "go",
+                                    "class": "\\My_Class",
+                                    "static": false,
+                                    "line": 18,
+                                    "end_line": 18
+                                },
+                                {
+                                    "name": "do_parental_stuff",
+                                    "class": "\\Parent_Class",
+                                    "static": true,
+                                    "line": 19,
+                                    "end_line": 19
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

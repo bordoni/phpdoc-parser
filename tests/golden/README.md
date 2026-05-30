@@ -24,29 +24,24 @@ here needs the WP test framework.
 
 ## 1. Capture the baseline (do this once, on the OLD stack)
 
-The old stack (`phpdocumentor/reflection ~3.0`, `nikic/php-parser 1.x`) does not
-run cleanly on PHP 8.x, so generate the baseline on **PHP 7.4**. Docker is the
-reliable way:
+The old stack (`phpdocumentor/reflection ~3.0`, `nikic/php-parser 1.x`) floods
+PHP 8.x with deprecations/warnings and produces unreliable output, so the
+baseline must be captured on **PHP 7.4**. The installed `vendor/` is pure PHP and
+version-agnostic, so install it on the host and just run the generator inside a
+PHP 7.4 container:
 
 ```bash
-# From the repo root.
-docker run --rm -it -v "$PWD":/app -w /app php:7.4-cli bash -c '
-  apt-get update -qq && apt-get install -y -qq git unzip >/dev/null
-  curl -sS https://getcomposer.org/installer | php -- --quiet
-  php composer.phar install --no-interaction --no-progress
-  php bin/generate-golden.php
-'
+composer install --no-dev          # installs the OLD locked parser stack (skips phpunit ^7)
+bin/generate-golden-docker.sh      # runs bin/generate-golden.php inside php:7.4-cli
 ```
 
-> If `composer install` chokes on the unmaintained `scribu/*` packages (they are
-> not needed for parsing), generate against a minimal install instead:
-> ```bash
-> docker run --rm -it -v "$PWD":/app -w /app php:7.4-cli bash -c '
->   curl -sS https://getcomposer.org/installer | php -- --quiet
->   php composer.phar require --no-interaction phpdocumentor/reflection:~3.0 erusev/parsedown:~1.7
->   php bin/generate-golden.php
-> '
-> ```
+The helper reuses the host's `vendor/` and writes files as your user (no Docker
+root-owned files). It is equivalent to:
+
+```bash
+docker run --rm -u "$(id -u):$(id -g)" -e HOME=/tmp -v "$PWD":/app -w /app \
+  php:7.4-cli php bin/generate-golden.php
+```
 
 Then commit `tests/golden/snapshots/`. **Never regenerate these against the new
 parser** — that would erase the oracle.

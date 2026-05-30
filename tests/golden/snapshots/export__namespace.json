@@ -1,0 +1,27 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "namespace.inc",
+        "root": "{{ROOT}}",
+        "functions": [
+            {
+                "name": "ohai",
+                "namespace": "Awesome\\Space",
+                "aliases": [],
+                "line": 5,
+                "end_line": 5,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": []
+            }
+        ]
+    }
+]

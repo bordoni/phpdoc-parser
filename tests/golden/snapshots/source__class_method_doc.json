@@ -1,0 +1,1990 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "class_method_doc.php",
+        "root": "{{ROOT}}",
+        "classes": [
+            {
+                "name": "Various_Method_Docs_Class",
+                "namespace": "global",
+                "line": 12,
+                "end_line": 478,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "public_method_missing_description",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 27,
+                        "end_line": 29,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_since",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 47,
+                        "end_line": 49,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_param",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 65,
+                        "end_line": 67,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_return",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 85,
+                        "end_line": 87,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_access",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 105,
+                        "end_line": 107,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_see",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 125,
+                        "end_line": 127,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_link",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 145,
+                        "end_line": 147,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "public_method_missing_global",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 165,
+                        "end_line": 167,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_description",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 182,
+                        "end_line": 184,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_since",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 202,
+                        "end_line": 204,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_param",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 220,
+                        "end_line": 222,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_return",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 240,
+                        "end_line": 242,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_access",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 260,
+                        "end_line": 262,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_see",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 280,
+                        "end_line": 282,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_link",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 300,
+                        "end_line": 302,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "protected_method_missing_global",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 320,
+                        "end_line": 322,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_description",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 337,
+                        "end_line": 339,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_since",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 357,
+                        "end_line": 359,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_param",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 375,
+                        "end_line": 377,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_return",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 395,
+                        "end_line": 397,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_access",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 415,
+                        "end_line": 417,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_see",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 435,
+                        "end_line": 437,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_link",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 455,
+                        "end_line": 457,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "global",
+                                    "content": "type $varname Short description."
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "private_method_missing_global",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 475,
+                        "end_line": 477,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Short description.",
+                            "long_description": "<p>Long description.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "relied on",
+                                    "refers": "Function/method/class"
+                                },
+                                {
+                                    "name": "link",
+                                    "content": "URL",
+                                    "link": "URL"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "This is a properly documented class.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "package",
+                            "content": "WordPress"
+                        },
+                        {
+                            "name": "since",
+                            "content": "2.1.0"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

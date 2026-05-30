@@ -1,0 +1,477 @@
+[
+    {
+        "file": {
+            "description": "This is a well documented filter.",
+            "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+            "tags": [
+                {
+                    "name": "since",
+                    "content": "3.9.0"
+                },
+                {
+                    "name": "param",
+                    "content": "Key/value pairs of strings.",
+                    "types": [
+                        "array"
+                    ],
+                    "variable": "$mce_translation"
+                },
+                {
+                    "name": "param",
+                    "content": "Locale.",
+                    "types": [
+                        "string"
+                    ],
+                    "variable": "$mce_locale"
+                }
+            ]
+        },
+        "path": "filters.php",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "apply_filters",
+                    "line": 13,
+                    "end_line": 13
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 26,
+                    "end_line": 26
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 39,
+                    "end_line": 39
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 50,
+                    "end_line": 50
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 61,
+                    "end_line": 61
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 72,
+                    "end_line": 72
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 84,
+                    "end_line": 84
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 96,
+                    "end_line": 96
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 108,
+                    "end_line": 108
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 122,
+                    "end_line": 122
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 124,
+                    "end_line": 124
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 126,
+                    "end_line": 126
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 128,
+                    "end_line": 128
+                }
+            ]
+        },
+        "hooks": [
+            {
+                "name": "good_static_filter",
+                "line": 13,
+                "end_line": 13,
+                "type": "filter",
+                "arguments": [
+                    "$mce_translation",
+                    "$mce_locale"
+                ],
+                "doc": {
+                    "description": "This is a well documented filter.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "3.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Key/value pairs of strings.",
+                            "types": [
+                                "array"
+                            ],
+                            "variable": "$mce_translation"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Locale.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$mce_locale"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "good_dynamic_filter_{$option}",
+                "line": 26,
+                "end_line": 26,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "This is a well documented dynamic filter.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.6.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new, unserialized option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "good_double_quotes_dynamic_filter_{$option}",
+                "line": 39,
+                "end_line": 39,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "This is a well documented dynamic filter.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.6.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new, unserialized option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_since_static_filter",
+                "line": 50,
+                "end_line": 50,
+                "type": "filter",
+                "arguments": [
+                    "$mce_translation",
+                    "$mce_locale"
+                ],
+                "doc": {
+                    "description": "This is a filter missing the \"since\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "param",
+                            "content": "The new, unserialized option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Locale.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$mce_locale"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_since_dynamic_filter_{$option}",
+                "line": 61,
+                "end_line": 61,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "This is a dynamic filter missing the \"since\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "param",
+                            "content": "The new, unserialized option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_since_double_quotes_dynamic_filter_{$option}",
+                "line": 72,
+                "end_line": 72,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "This is a dynamic filter missing the \"since\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "param",
+                            "content": "The new, unserialized option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_param_static_filter",
+                "line": 84,
+                "end_line": 84,
+                "type": "filter",
+                "arguments": [
+                    "$mce_translation",
+                    "$mce_locale"
+                ],
+                "doc": {
+                    "description": "This is a filter missing one \"param\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.6.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Locale.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$mce_locale"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_param_dynamic_filter_{$option}",
+                "line": 96,
+                "end_line": 96,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "This is a dynamic filter missing one \"param\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.6.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Locale.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$mce_locale"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_param_double_quotes_dynamic_filter_{$option}",
+                "line": 108,
+                "end_line": 108,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "This is a dynamic filter missing one \"param\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.6.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Locale.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$mce_locale"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "multiple_since_tags",
+                "line": 122,
+                "end_line": 122,
+                "type": "filter",
+                "arguments": [
+                    "$first_parameter",
+                    "$second_parameter"
+                ],
+                "doc": {
+                    "description": "This is a filter with multiple since tags",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.0"
+                        },
+                        {
+                            "name": "since",
+                            "content": "1.9",
+                            "description": "Added a new parameter to the filter"
+                        },
+                        {
+                            "name": "param",
+                            "content": "",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$first_parameter"
+                        },
+                        {
+                            "name": "param",
+                            "content": "",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$second_parameter"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "no_doc_static_filter",
+                "line": 124,
+                "end_line": 124,
+                "type": "filter",
+                "arguments": [
+                    "$mce_translation",
+                    "$mce_locale"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "no_doc_dynamic_filter_{$option}",
+                "line": 126,
+                "end_line": 126,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "no_doc_double_quotes_dynamic_filter_{$option}",
+                "line": 128,
+                "end_line": 128,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$old_value"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

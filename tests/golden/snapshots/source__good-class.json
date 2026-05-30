@@ -1,0 +1,341 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "good-class.php",
+        "root": "{{ROOT}}",
+        "classes": [
+            {
+                "name": "Good_Doc_Class",
+                "namespace": "global",
+                "line": 12,
+                "end_line": 91,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [
+                    {
+                        "name": "$good_doc_private_property_from_good_doc_class",
+                        "line": 21,
+                        "end_line": 21,
+                        "default": "array()",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "This is a properly documented private property.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$good_doc_protected_property_from_good_doc_class",
+                        "line": 30,
+                        "end_line": 30,
+                        "default": "array()",
+                        "static": false,
+                        "visibility": "protected",
+                        "doc": {
+                            "description": "This is a properly documented protected property.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "protected"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$good_doc_public_property_from_good_doc_class",
+                        "line": 39,
+                        "end_line": 39,
+                        "default": "array()",
+                        "static": false,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "This is a properly documented public property.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "methods": [
+                    {
+                        "name": "good_doc_public_method_from_good_doc_class",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 54,
+                        "end_line": 56,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "This is a properly documented public method.",
+                            "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "good_doc_protected_method_from_good_doc_class",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 71,
+                        "end_line": 73,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "protected",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "This is a properly documented protected method.",
+                            "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "good_doc_private_method_from_good_doc_class",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 88,
+                        "end_line": 90,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "private",
+                        "arguments": [
+                            {
+                                "name": "$code",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$message",
+                                "default": "''",
+                                "type": ""
+                            },
+                            {
+                                "name": "$data",
+                                "default": "''",
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "This is a properly documented private method.",
+                            "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error code",
+                                    "types": [
+                                        "string",
+                                        "int"
+                                    ],
+                                    "variable": "$code"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Error message",
+                                    "types": [
+                                        "string"
+                                    ],
+                                    "variable": "$message"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "Optional. Error data.",
+                                    "types": [
+                                        "mixed"
+                                    ],
+                                    "variable": "$data"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\WP_Error"
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "This is a properly documented class.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "package",
+                            "content": "WordPress"
+                        },
+                        {
+                            "name": "since",
+                            "content": "2.1.0"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

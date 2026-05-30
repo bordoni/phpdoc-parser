@@ -1,0 +1,494 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "relationships.php",
+        "root": "{{ROOT}}",
+        "functions": [
+            {
+                "name": "relate_function1",
+                "namespace": "global",
+                "aliases": [],
+                "line": 3,
+                "end_line": 5,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "relate_function2",
+                            "line": 4,
+                            "end_line": 4
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "relate_function2",
+                "namespace": "global",
+                "aliases": [],
+                "line": 7,
+                "end_line": 15,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [
+                    {
+                        "name": "relate-hook",
+                        "line": 12,
+                        "end_line": 12,
+                        "type": "filter",
+                        "arguments": [
+                            "true"
+                        ],
+                        "doc": {
+                            "description": "A relationship hook",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    }
+                ],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "apply_filters",
+                            "line": 12,
+                            "end_line": 12
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "relate_function3",
+                "namespace": "global",
+                "aliases": [],
+                "line": 17,
+                "end_line": 19,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "relate_method1",
+                            "class": "\\wpdb",
+                            "static": true,
+                            "line": 18,
+                            "end_line": 18
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "relate_function4",
+                "namespace": "global",
+                "aliases": [],
+                "line": 21,
+                "end_line": 25,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "__construct",
+                            "class": "\\wpdb",
+                            "static": false,
+                            "line": 22,
+                            "end_line": 22
+                        },
+                        {
+                            "name": "relate_method4",
+                            "class": "$wpdb",
+                            "static": false,
+                            "line": 24,
+                            "end_line": 24
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "relate_function5",
+                "namespace": "global",
+                "aliases": [],
+                "line": 27,
+                "end_line": 29,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "some_function",
+                            "class": "\\wpdb::relate_method2()",
+                            "static": false,
+                            "line": 28,
+                            "end_line": 28
+                        },
+                        {
+                            "name": "relate_method2",
+                            "class": "\\wpdb",
+                            "static": true,
+                            "line": 28,
+                            "end_line": 28
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "relate_function6",
+                "namespace": "global",
+                "aliases": [],
+                "line": 31,
+                "end_line": 33,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "relate_method1",
+                            "class": "wp_screen()",
+                            "static": false,
+                            "line": 32,
+                            "end_line": 32
+                        }
+                    ],
+                    "functions": [
+                        {
+                            "name": "wp_screen",
+                            "line": 32,
+                            "end_line": 32
+                        }
+                    ]
+                }
+            }
+        ],
+        "classes": [
+            {
+                "name": "wpdb",
+                "namespace": "global",
+                "line": 35,
+                "end_line": 76,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "__construct",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 37,
+                        "end_line": 37,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    },
+                    {
+                        "name": "relate_method1",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 39,
+                        "end_line": 41,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "relate_method2",
+                                    "class": "\\wpdb",
+                                    "static": true,
+                                    "line": 40,
+                                    "end_line": 40
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "relate_method2",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 43,
+                        "end_line": 53,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "functions": [
+                                {
+                                    "name": "apply_filters",
+                                    "line": 52,
+                                    "end_line": 52
+                                }
+                            ]
+                        },
+                        "hooks": [
+                            {
+                                "name": "meh-hook",
+                                "line": 52,
+                                "end_line": 52,
+                                "type": "filter",
+                                "arguments": [
+                                    "$meh"
+                                ],
+                                "doc": {
+                                    "description": "Filter a aCustomize setting value in un-slashed form.",
+                                    "long_description": "",
+                                    "tags": [
+                                        {
+                                            "name": "since",
+                                            "content": "3.5.0"
+                                        },
+                                        {
+                                            "name": "param",
+                                            "content": "Value of the setting.",
+                                            "types": [
+                                                "mixed"
+                                            ],
+                                            "variable": "$value"
+                                        },
+                                        {
+                                            "name": "param",
+                                            "content": "WP_Customize_Setting instance.",
+                                            "types": [
+                                                "\\WP_Customize_Setting"
+                                            ],
+                                            "variable": "$this"
+                                        }
+                                    ]
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "name": "relate_method3",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 55,
+                        "end_line": 57,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "functions": [
+                                {
+                                    "name": "relate_function1",
+                                    "line": 56,
+                                    "end_line": 56
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "relate_method4",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 59,
+                        "end_line": 61,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "functions": [
+                                {
+                                    "name": "relate_function2",
+                                    "line": 60,
+                                    "end_line": 60
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "relate_method5",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 63,
+                        "end_line": 65,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "relate_method4",
+                                    "class": "\\wpdb",
+                                    "static": false,
+                                    "line": 64,
+                                    "end_line": 64
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "relate_method6",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 67,
+                        "end_line": 69,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "relate_method1",
+                                    "class": "\\wpdb",
+                                    "static": true,
+                                    "line": 68,
+                                    "end_line": 68
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "relate_method7",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 71,
+                        "end_line": 75,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "relate_method5",
+                                    "class": "$wpdb",
+                                    "static": false,
+                                    "line": 74,
+                                    "end_line": 74
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "WP_Screen",
+                "namespace": "global",
+                "line": 78,
+                "end_line": 80,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "relate_method1",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 79,
+                        "end_line": 79,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

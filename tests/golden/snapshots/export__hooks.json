@@ -1,0 +1,122 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "hooks.inc",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "do_action",
+                    "line": 3,
+                    "end_line": 3
+                },
+                {
+                    "name": "do_action",
+                    "line": 4,
+                    "end_line": 4
+                },
+                {
+                    "name": "do_action",
+                    "line": 5,
+                    "end_line": 5
+                },
+                {
+                    "name": "do_action",
+                    "line": 6,
+                    "end_line": 6
+                },
+                {
+                    "name": "do_action",
+                    "line": 7,
+                    "end_line": 7
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 8,
+                    "end_line": 8
+                }
+            ]
+        },
+        "hooks": [
+            {
+                "name": "plain_action",
+                "line": 3,
+                "end_line": 3,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "action_with_double_quotes",
+                "line": 4,
+                "end_line": 4,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "{$variable}-action",
+                "line": 5,
+                "end_line": 5,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "another-{$variable}-action",
+                "line": 6,
+                "end_line": 6,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "hook_{$object->property}_pre",
+                "line": 7,
+                "end_line": 7,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "plain_filter",
+                "line": 8,
+                "end_line": 8,
+                "type": "filter",
+                "arguments": [
+                    "$variable",
+                    "$filter_context"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

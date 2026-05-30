@@ -1,0 +1,169 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "nested.inc",
+        "root": "{{ROOT}}",
+        "functions": [
+            {
+                "name": "sub_test",
+                "namespace": "global",
+                "aliases": [],
+                "line": 7,
+                "end_line": 12,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "b_function",
+                            "line": 9,
+                            "end_line": 9
+                        }
+                    ],
+                    "methods": [
+                        {
+                            "name": "static_method",
+                            "class": "\\My_Class",
+                            "static": true,
+                            "line": 11,
+                            "end_line": 11
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "test",
+                "namespace": "global",
+                "aliases": [],
+                "line": 3,
+                "end_line": 17,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "a_function",
+                            "line": 5,
+                            "end_line": 5
+                        },
+                        {
+                            "name": "sub_test",
+                            "line": 14,
+                            "end_line": 14
+                        }
+                    ],
+                    "methods": [
+                        {
+                            "name": "do_things",
+                            "class": "\\My_Class",
+                            "static": true,
+                            "line": 16,
+                            "end_line": 16
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "sub_method_test",
+                "namespace": "global",
+                "aliases": [],
+                "line": 25,
+                "end_line": 30,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "b_function",
+                            "line": 27,
+                            "end_line": 27
+                        }
+                    ],
+                    "methods": [
+                        {
+                            "name": "a_method",
+                            "class": "\\My_Class",
+                            "static": true,
+                            "line": 29,
+                            "end_line": 29
+                        }
+                    ]
+                }
+            }
+        ],
+        "classes": [
+            {
+                "name": "My_Class",
+                "namespace": "global",
+                "line": 19,
+                "end_line": 34,
+                "final": false,
+                "abstract": false,
+                "extends": "\\Parent_Class",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "a_method",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 21,
+                        "end_line": 33,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "do_it",
+                                    "class": "\\My_Class",
+                                    "static": false,
+                                    "line": 23,
+                                    "end_line": 23
+                                }
+                            ],
+                            "functions": [
+                                {
+                                    "name": "do_things",
+                                    "line": 32,
+                                    "end_line": 32
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]
