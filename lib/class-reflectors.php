@@ -124,6 +124,22 @@ class Reflector_Helpers {
 	}
 
 	/**
+	 * Render a namespace-alias map for export, fully-qualifying each target with a
+	 * leading backslash (alias => "\Fully\Qualified"), matching the legacy output.
+	 *
+	 * @param array $aliases Map of alias => fully-qualified name (no leading slash).
+	 * @return array
+	 */
+	public static function export_aliases( array $aliases ) {
+		$out = array();
+		foreach ( $aliases as $alias => $fqn ) {
+			$out[ $alias ] = '\\' . ltrim( $fqn, '\\' );
+		}
+
+		return $out;
+	}
+
+	/**
 	 * Build Argument_Reflectors for a list of parameters.
 	 *
 	 * @param Node\Param[] $params
@@ -197,7 +213,7 @@ class Function_Reflector {
 	}
 
 	public function getNamespaceAliases() {
-		return $this->aliases;
+		return Reflector_Helpers::export_aliases( $this->aliases );
 	}
 
 	public function getLineNumber() {
@@ -326,11 +342,13 @@ class Method_Reflector {
 	}
 
 	public function getNamespace() {
-		return ''; // Methods carry no namespace in the legacy output.
+		// A method carries its enclosing namespace; the global namespace is reported
+		// as '' (not 'global', unlike functions/classes), matching the legacy output.
+		return 'global' === $this->resolve_namespace ? '' : $this->resolve_namespace;
 	}
 
 	public function getNamespaceAliases() {
-		return $this->aliases;
+		return Reflector_Helpers::export_aliases( $this->aliases );
 	}
 
 	public function getLineNumber() {

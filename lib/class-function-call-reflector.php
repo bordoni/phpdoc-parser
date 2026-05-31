@@ -21,9 +21,10 @@ class Function_Call_Reflector {
 	/**
 	 * The called function's name.
 	 *
-	 * Namespaced calls resolve to a leading-backslash FQN (via the NameResolver
-	 * namespacedName attribute); global calls stay unqualified, matching the
-	 * legacy output (e.g. apply_filters, do_action).
+	 * Reproduces the legacy resolution: an unqualified name that resolves to itself
+	 * is a global-fallback call and stays bare (count, apply_filters); a fully-
+	 * qualified, qualified, or use-function-imported name resolves to a leading-
+	 * backslash FQN (\do_action, \Other\helper, \My\Plugin\Sub\thing).
 	 *
 	 * @return string
 	 */
@@ -31,9 +32,16 @@ class Function_Call_Reflector {
 		$name = $this->node->name;
 
 		if ( $name instanceof Node\Name ) {
-			$namespaced = $name->getAttribute( 'namespacedName' );
-			if ( null !== $namespaced ) {
-				return '\\' . $namespaced->toString();
+			$resolved = $name->getAttribute( 'resolvedName' );
+
+			// Unqualified names resolving to themselves stay bare (global fallback).
+			if ( $name->isUnqualified()
+				&& ( null === $resolved || $resolved->toString() === $name->toString() ) ) {
+				return $name->toString();
+			}
+
+			if ( null !== $resolved ) {
+				return '\\' . $resolved->toString();
 			}
 
 			return $name->toString();

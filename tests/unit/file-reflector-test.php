@@ -168,4 +168,39 @@ class File_Reflector_Test extends TestCase {
 			$this->assertSame( $expected, $actual, "first statement: {$statement}" );
 		}
 	}
+
+	public function test_namespaced_function_and_hook_resolution() {
+		// In a namespace, function-use names resolve to a leading-backslash FQN unless
+		// they are unqualified global-fallback calls (which stay bare). A fully-
+		// qualified \do_action is a plain function call, not a hook. (Golden coverage:
+		// tests/.../export/namespaced-uses.)
+		$tmp = tempnam( sys_get_temp_dir(), 'wpp' );
+		file_put_contents(
+			$tmp,
+			"<?php\nnamespace My\\Ns;\nuse function Other\\helper;\nfunction caller() {\n"
+			. "\thelper();\n\t\\do_action( 'x' );\n\tcount( \$a );\n}\n"
+		);
+
+		try {
+			$file = new File_Reflector( $tmp );
+			$file->setFilename( 'ns.php' );
+			$file->process();
+		} finally {
+			unlink( $tmp );
+		}
+
+		$function = $file->getFunctions()[0];
+		$this->assertSame( 'My\\Ns', $function->getNamespace() );
+
+		$names = array_map(
+			static function ( $use ) {
+				return $use->getName();
+			},
+			$function->uses['functions']
+		);
+		$this->assertSame( array( '\\Other\\helper', '\\do_action', 'count' ), $names );
+
+		// The fully-qualified \do_action is a function use, not a hook.
+		$this->assertEmpty( isset( $function->uses['hooks'] ) ? $function->uses['hooks'] : array() );
+	}
 }

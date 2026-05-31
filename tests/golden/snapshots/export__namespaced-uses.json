@@ -1,0 +1,164 @@
+[
+    {
+        "file": {
+            "description": "Namespaced name-resolution fixture.",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "namespaced-uses.inc",
+        "root": "{{ROOT}}",
+        "functions": [
+            {
+                "name": "namespaced_func",
+                "namespace": "My\\Plugin",
+                "aliases": {
+                    "Thing": "\\Other\\Thing",
+                    "Aliased": "\\Some\\Long\\ClassName",
+                    "helper": "\\Other\\helper"
+                },
+                "line": 30,
+                "end_line": 32,
+                "arguments": [
+                    {
+                        "name": "$t",
+                        "default": null,
+                        "type": "\\Other\\Thing"
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "create",
+                            "class": "\\Some\\Long\\ClassName",
+                            "static": true,
+                            "line": 31,
+                            "end_line": 31
+                        }
+                    ]
+                }
+            }
+        ],
+        "classes": [
+            {
+                "name": "Widget",
+                "namespace": "My\\Plugin",
+                "line": 12,
+                "end_line": 28,
+                "final": false,
+                "abstract": false,
+                "extends": "\\WP_Widget",
+                "implements": [
+                    "\\Other\\Thing"
+                ],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "render",
+                        "namespace": "My\\Plugin",
+                        "aliases": {
+                            "Thing": "\\Other\\Thing",
+                            "Aliased": "\\Some\\Long\\ClassName",
+                            "helper": "\\Other\\helper"
+                        },
+                        "line": 19,
+                        "end_line": 27,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$t",
+                                "default": null,
+                                "type": "\\Other\\Thing"
+                            }
+                        ],
+                        "doc": {
+                            "description": "Render.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "param",
+                                    "content": "A thing.",
+                                    "types": [
+                                        "\\Other\\Thing"
+                                    ],
+                                    "variable": "$t"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "",
+                                    "types": [
+                                        "\\Some\\Long\\ClassName"
+                                    ]
+                                }
+                            ]
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "__construct",
+                                    "class": "\\Some\\Long\\ClassName",
+                                    "static": false,
+                                    "line": 20,
+                                    "end_line": 20
+                                },
+                                {
+                                    "name": "make",
+                                    "class": "\\Other\\Thing",
+                                    "static": true,
+                                    "line": 21,
+                                    "end_line": 21
+                                },
+                                {
+                                    "name": "helper",
+                                    "class": "\\My\\Plugin\\Widget",
+                                    "static": true,
+                                    "line": 22,
+                                    "end_line": 22
+                                },
+                                {
+                                    "name": "widget",
+                                    "class": "\\WP_Widget",
+                                    "static": true,
+                                    "line": 23,
+                                    "end_line": 23
+                                },
+                                {
+                                    "name": "__construct",
+                                    "class": "\\DateTime",
+                                    "static": false,
+                                    "line": 26,
+                                    "end_line": 26
+                                }
+                            ],
+                            "functions": [
+                                {
+                                    "name": "\\do_action",
+                                    "line": 24,
+                                    "end_line": 24
+                                },
+                                {
+                                    "name": "\\Other\\helper",
+                                    "line": 25,
+                                    "end_line": 25
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

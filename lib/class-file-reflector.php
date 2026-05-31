@@ -315,7 +315,9 @@ class File_Reflector extends NodeVisitorAbstract {
 	 * @return bool
 	 */
 	protected function is_filter( Node\Expr\FuncCall $node ) {
-		if ( ! ( $node->name instanceof Node\Name ) ) {
+		// A fully-qualified call (\do_action) is a plain function call, not a hook —
+		// the legacy parser only recognised the unqualified hook function names.
+		if ( ! ( $node->name instanceof Node\Name ) || $node->name instanceof Node\Name\FullyQualified ) {
 			return false;
 		}
 
