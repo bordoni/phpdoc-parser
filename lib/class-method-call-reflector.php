@@ -64,7 +64,8 @@ class Method_Call_Reflector {
 			return $this->map_class( $this->resolve_relative_name( Reflector_Helpers::pretty_print_expr( $caller ) ) );
 		}
 
-		return $this->map_class( (string) $caller );
+		// Anonymous class (e.g. `new class extends Foo {}`) — no name to report.
+		return '';
 	}
 
 	/**

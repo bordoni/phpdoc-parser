@@ -82,4 +82,31 @@ class File_Reflector_Test extends TestCase {
 		$this->assertSame( "''", $arguments[0]->getDefault() );
 		$this->assertSame( '', $arguments[0]->getType() );
 	}
+
+	public function test_handles_anonymous_class_without_fatal() {
+		// Real WordPress core instantiates anonymous classes; this must not fatal.
+		$tmp = tempnam( sys_get_temp_dir(), 'wpp' );
+		file_put_contents(
+			$tmp,
+			"<?php\nfunction make() {\n\treturn new class extends Some_Base {\n\t\tpublic function go() {}\n\t};\n}\n"
+		);
+
+		try {
+			$file = new File_Reflector( $tmp );
+			$file->setFilename( 'anon.php' );
+			$file->process();
+		} finally {
+			unlink( $tmp );
+		}
+
+		$functions = $file->getFunctions();
+		$this->assertCount( 1, $functions );
+
+		$uses = $functions[0]->uses;
+		$this->assertNotEmpty( $uses['methods'] );
+
+		$name = $uses['methods'][0]->getName();
+		$this->assertSame( '', $name[0] ); // Anonymous class — no name.
+		$this->assertSame( '__construct', $name[1] );
+	}
 }
