@@ -41,20 +41,6 @@ class Export_UnitTestCase extends \WP_UnitTestCase {
 		parent::set_up();
 
 		if ( ! $this->export_data ) {
-
-			// During the migration the parser is temporarily unloadable (Stage 2
-			// drops phpdocumentor/reflection; Stage 4 rewrites File_Reflector).
-			// Skip rather than fatal until the new parser lands.
-			try {
-				$parser_loadable = class_exists( '\WP_Parser\File_Reflector' );
-			} catch ( \Throwable $e ) {
-				$parser_loadable = false;
-			}
-
-			if ( ! $parser_loadable ) {
-				$this->markTestSkipped( 'Parser not loadable (migration in progress); File_Reflector unavailable.' );
-			}
-
 			$this->parse_file();
 		}
 	}

@@ -151,22 +151,3 @@ function to_json( $data ) {
 function parse_entry( array $entry ) {
 	return normalize( \WP_Parser\parse_files( $entry['files'], $entry['root'] ) );
 }
-
-/**
- * Whether the parser is currently loadable.
- *
- * During the migration — after Stage 2 drops phpdocumentor/reflection but before
- * Stage 4 rewrites File_Reflector onto nikic/php-parser 5 — the old
- * phpDocumentor\Reflection\FileReflector base class is gone, so loading the
- * parser throws. This lets the golden test (and the WP suite) SKIP rather than
- * ERROR until the new visitor lands.
- *
- * @return bool
- */
-function parser_is_functional() {
-	try {
-		return class_exists( '\WP_Parser\File_Reflector' );
-	} catch ( \Throwable $e ) {
-		return false;
-	}
-}

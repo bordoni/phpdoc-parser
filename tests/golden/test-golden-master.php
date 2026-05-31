@@ -29,12 +29,6 @@ class Golden_Master_Test extends TestCase {
 	 * @param array  $entry Corpus entry: { files, root }.
 	 */
 	public function test_output_matches_golden( $slug, array $entry ) {
-		if ( ! \WP_Parser\Golden\parser_is_functional() ) {
-			$this->markTestSkipped(
-				'Parser not loadable yet (migration in progress — File_Reflector rewrite pending in Stage 4).'
-			);
-		}
-
 		$snapshot = \WP_Parser\Golden\snapshot_path( $slug );
 
 		if ( ! file_exists( $snapshot ) ) {
