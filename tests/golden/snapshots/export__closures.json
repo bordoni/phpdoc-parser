@@ -1,0 +1,64 @@
+[
+    {
+        "file": {
+            "description": "Closures and callables.",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "closures.inc",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "add_action",
+                    "line": 6,
+                    "end_line": 9
+                },
+                {
+                    "name": "do_something",
+                    "line": 7,
+                    "end_line": 7
+                },
+                {
+                    "name": "helper",
+                    "line": 12,
+                    "end_line": 12
+                }
+            ],
+            "methods": [
+                {
+                    "name": "method",
+                    "class": "$obj",
+                    "static": false,
+                    "line": 8,
+                    "end_line": 8
+                }
+            ]
+        },
+        "functions": [
+            {
+                "name": "with_closure",
+                "namespace": "global",
+                "aliases": [],
+                "line": 15,
+                "end_line": 21,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "inner_call",
+                            "line": 17,
+                            "end_line": 17
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]
