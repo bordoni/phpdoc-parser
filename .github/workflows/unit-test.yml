@@ -12,7 +12,9 @@ jobs:
           fail-fast: false
           matrix:
               php:
-                - '7.4'
+                - '8.2'
+                - '8.3'
+                - '8.4'
 
       env:
         WP_ENV_PHP_VERSION: ${{ matrix.php }}
@@ -25,9 +27,7 @@ jobs:
         run: npm install
 
       - name: Setup Environment
-        run: |
-          rm composer.lock
-          npm run setup
+        run: npm run setup
 
       - name: Test
         run: npm run test
