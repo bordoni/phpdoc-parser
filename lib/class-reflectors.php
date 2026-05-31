@@ -32,6 +32,16 @@ class Reflector_Helpers {
 	}
 
 	/**
+	 * Pretty print an expression to its source string.
+	 *
+	 * @param Node\Expr $expr
+	 * @return string
+	 */
+	public static function pretty_print_expr( $expr ) {
+		return self::printer()->prettyPrintExpr( $expr );
+	}
+
+	/**
 	 * Render a default-value expression to its source string, or null when absent.
 	 *
 	 * @param Node\Expr|null $expr
@@ -170,6 +180,7 @@ class Function_Reflector {
 		$this->node      = $node;
 		$this->namespace = $namespace;
 		$this->aliases   = $aliases;
+		$this->uses      = $node->getAttribute( 'wp_parser_uses' );
 	}
 
 	public function getShortName() {
@@ -302,6 +313,7 @@ class Method_Reflector {
 		$this->node              = $node;
 		$this->resolve_namespace = $resolve_namespace;
 		$this->aliases           = $aliases;
+		$this->uses              = $node->getAttribute( 'wp_parser_uses' );
 	}
 
 	public function getShortName() {

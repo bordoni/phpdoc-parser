@@ -18,6 +18,7 @@ use phpDocumentor\Reflection\DocBlock;
 use phpDocumentor\Reflection\DocBlockFactory;
 use phpDocumentor\Reflection\DocBlock\Tags;
 use phpDocumentor\Reflection\Type;
+use phpDocumentor\Reflection\TypeResolver;
 use phpDocumentor\Reflection\Types\Compound;
 use phpDocumentor\Reflection\Types\Context;
 
@@ -29,8 +30,12 @@ class Docblock_Adapter {
 	/** @var DocBlock */
 	protected $docblock;
 
-	public function __construct( DocBlock $docblock ) {
+	/** @var Context|null */
+	protected $context;
+
+	public function __construct( DocBlock $docblock, Context $context = null ) {
 		$this->docblock = $docblock;
+		$this->context  = $context;
 	}
 
 	/**
@@ -74,7 +79,7 @@ class Docblock_Adapter {
 			return null;
 		}
 
-		return new self( $docblock );
+		return new self( $docblock, $context );
 	}
 
 	public function getShortDescription() {
@@ -91,7 +96,7 @@ class Docblock_Adapter {
 	public function getTags() {
 		$tags = array();
 		foreach ( $this->docblock->getTags() as $tag ) {
-			$tags[] = self::adapt_tag( $tag );
+			$tags[] = $this->adapt_tag( $tag );
 		}
 
 		return $tags;
@@ -104,14 +109,14 @@ class Docblock_Adapter {
 	 *
 	 * @return object
 	 */
-	protected static function adapt_tag( $tag ) {
+	protected function adapt_tag( $tag ) {
 		$name = $tag->getName();
 
 		// Tags reflection-docblock can't parse strictly (e.g. @see with a non-FQSEN
-		// reference) come back as InvalidTag; reconstruct from the raw body to match
-		// the legacy loose parsing.
+		// reference, or @param with a $this variable) come back as InvalidTag;
+		// reconstruct from the raw body to match the legacy loose parsing.
 		if ( $tag instanceof Tags\InvalidTag ) {
-			return self::adapt_invalid_tag( $tag, $name );
+			return $this->adapt_invalid_tag( $tag, $name );
 		}
 
 		$description = self::render_description( method_exists( $tag, 'getDescription' ) ? $tag->getDescription() : null );
@@ -162,7 +167,7 @@ class Docblock_Adapter {
 	 *
 	 * @return object
 	 */
-	protected static function adapt_invalid_tag( $tag, $name ) {
+	protected function adapt_invalid_tag( $tag, $name ) {
 		$body = preg_replace( '/^@' . preg_quote( $name, '/' ) . '\s*/', '', $tag->render() );
 
 		// @see / @uses: the first token is the reference, the remainder the description.
@@ -176,7 +181,43 @@ class Docblock_Adapter {
 			);
 		}
 
+		// @param / @var with a variable reflection-docblock rejects (e.g. $this):
+		// "<type> <$variable> <description>".
+		if ( 'param' === $name || 'var' === $name || 'property' === $name ) {
+			$parts = preg_split( '/\s+/', $body, 3 );
+
+			if ( isset( $parts[1] ) && 0 === strpos( $parts[1], '$' ) ) {
+				return new Param_Tag_Adapter(
+					$name,
+					isset( $parts[2] ) ? $parts[2] : '',
+					$this->resolve_type_string( $parts[0] ),
+					$parts[1]
+				);
+			}
+		}
+
 		return new Generic_Tag_Adapter( $name, $body );
+	}
+
+	/**
+	 * Resolve a written type string to the legacy array of type strings, using the
+	 * docblock context (so class names get the leading-backslash FQN form).
+	 *
+	 * @param string $type_string
+	 *
+	 * @return string[]
+	 */
+	protected function resolve_type_string( $type_string ) {
+		static $resolver = null;
+		if ( null === $resolver ) {
+			$resolver = new TypeResolver();
+		}
+
+		try {
+			return self::type_to_legacy_strings( $resolver->resolve( $type_string, $this->context ) );
+		} catch ( \Throwable $e ) {
+			return array( $type_string );
+		}
 	}
 
 	/**

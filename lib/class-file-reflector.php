@@ -14,16 +14,14 @@ use PhpParser\ParserFactory;
  *
  * Replaces the former phpDocumentor FileReflector subclass. It walks the AST as
  * a NodeVisitor, collecting the structural elements (functions, classes, their
- * methods and properties) that runner.php exports, while keeping the exported
- * array shape identical.
- *
- * Hook detection (do_action/apply_filters) and the per-element $uses list are
- * added in a later stage; for now $uses stays empty.
+ * methods and properties) that runner.php exports, the WordPress hooks declared
+ * via do_action()/apply_filters(), and the functions/methods each element uses —
+ * all while keeping the exported array shape identical.
  */
 class File_Reflector extends NodeVisitorAbstract {
 
 	/**
-	 * Elements used in file scope, indexed by element type (hooks, functions, methods).
+	 * Elements used in file scope, indexed by element type (functions, methods, hooks).
 	 *
 	 * @var array
 	 */
@@ -44,6 +42,12 @@ class File_Reflector extends NodeVisitorAbstract {
 
 	/** @var Docblock_Adapter|null The file-level docblock, if any. */
 	protected $file_docblock = null;
+
+	/** @var Node[] Stack of scope nodes (function/method/class) currently open. */
+	protected $location = array();
+
+	/** @var Doc|null Last docblock seen on a non-documentable node, for the next hook. */
+	protected $last_doc = null;
 
 	/** @var string Current namespace ('global' at file scope). */
 	protected $namespace = 'global';
@@ -93,22 +97,29 @@ class File_Reflector extends NodeVisitorAbstract {
 
 		$this->file_docblock = $this->detect_file_docblock( $stmts );
 
+		// Pass 1: resolve names. replaceNodes:false keeps the original Name nodes and
+		// attaches resolved names as attributes — the v5 analog of v1's namespacedName.
+		$resolver = new NodeTraverser();
+		$resolver->addVisitor( new NameResolver( null, array( 'replaceNodes' => false ) ) );
+		$stmts = $resolver->traverse( $stmts );
+
+		// Pass 2: fully-qualify class-position names (so a nested `Class::m()` caller
+		// prints as `\Class::m()`) while leaving function names alone, then reflect.
 		$traverser = new NodeTraverser();
-		// replaceNodes:false keeps the original Name nodes and attaches resolved
-		// names as attributes — the v5 analog of v1's $node->namespacedName.
-		$traverser->addVisitor( new NameResolver( null, array( 'replaceNodes' => false ) ) );
+		$traverser->addVisitor( new Class_Name_Resolver() );
 		$traverser->addVisitor( $this );
 		$traverser->traverse( $stmts );
 	}
 
 	/**
-	 * Track the current namespace and import aliases as we enter nodes.
+	 * Track scope, record hook/function/method usage, and carry hook docblocks.
 	 *
 	 * @param Node $node
 	 *
 	 * @return null
 	 */
 	public function enterNode( Node $node ) {
+		// Track namespace and import aliases.
 		if ( $node instanceof Node\Stmt\Namespace_ ) {
 			$this->namespace = $node->name ? $node->name->toString() : 'global';
 			$this->aliases   = array();
@@ -116,6 +127,40 @@ class File_Reflector extends NodeVisitorAbstract {
 			foreach ( $node->uses as $use ) {
 				$this->aliases[ $use->getAlias()->toString() ] = $use->name->toString();
 			}
+		}
+
+		// Maintain the scope stack so calls are attributed to the right element.
+		if ( $node instanceof Node\Stmt\Function_
+			|| $node instanceof Node\Stmt\ClassMethod
+			|| $node instanceof Node\Stmt\Class_ ) {
+			$this->location[] = $node;
+		}
+
+		// Record function/method/hook usage.
+		if ( $node instanceof Node\Expr\FuncCall ) {
+			$this->add_use( 'functions', new Function_Call_Reflector( $node ) );
+
+			if ( $this->is_filter( $node ) ) {
+				if ( $this->last_doc && null === $node->getDocComment() ) {
+					$node->setAttribute( 'comments', array( $this->last_doc ) );
+					$this->last_doc = null;
+				}
+
+				$this->add_use( 'hooks', new Hook_Reflector( $node, $this->namespace, $this->aliases ) );
+			}
+		} elseif ( $node instanceof Node\Expr\MethodCall ) {
+			$this->add_use( 'methods', new Method_Call_Reflector( $node ) );
+		} elseif ( $node instanceof Node\Expr\StaticCall ) {
+			$this->add_use( 'methods', new Static_Method_Call_Reflector( $node ) );
+		} elseif ( $node instanceof Node\Expr\New_ ) {
+			$this->add_use( 'methods', new Method_Call_Reflector( $node ) );
+		}
+
+		// Carry a docblock from a non-documentable node to the next hook.
+		if ( ! $this->is_node_documentable( $node )
+			&& ! ( $node instanceof Node\Name )
+			&& null !== $node->getDocComment() ) {
+			$this->last_doc = $node->getDocComment();
 		}
 
 		return null;
@@ -126,7 +171,8 @@ class File_Reflector extends NodeVisitorAbstract {
 	 *
 	 * Functions and classes are recorded on leave (not enter) so that nested
 	 * functions are listed before their enclosing function — matching the order
-	 * the legacy parser produced.
+	 * the legacy parser produced. Leaving a class is also when its methods' calls
+	 * learn which class they were made in (for $this/self/parent resolution).
 	 *
 	 * @param Node $node
 	 *
@@ -136,10 +182,101 @@ class File_Reflector extends NodeVisitorAbstract {
 		if ( $node instanceof Node\Stmt\Function_ ) {
 			$this->functions[] = new Function_Reflector( $node, $this->namespace, $this->aliases );
 		} elseif ( $node instanceof Node\Stmt\Class_ && null !== $node->name ) {
-			$this->classes[] = new Class_Reflector( $node, $this->namespace, $this->aliases );
+			$class = new Class_Reflector( $node, $this->namespace, $this->aliases );
+			$this->set_called_in_class( $node, $class );
+			$this->classes[] = $class;
+		}
+
+		if ( ! empty( $this->location ) && end( $this->location ) === $node ) {
+			array_pop( $this->location );
 		}
 
 		return null;
+	}
+
+	/**
+	 * Append a used element to the current scope (file, function, or method).
+	 *
+	 * Method/function scope uses are stored on the scope node as an attribute, so
+	 * the matching reflector picks them up when it is built.
+	 *
+	 * @param string $type Use type: functions, methods, or hooks.
+	 * @param object $item The reflector for the used element.
+	 */
+	protected function add_use( $type, $item ) {
+		if ( empty( $this->location ) ) {
+			$this->uses[ $type ][] = $item;
+
+			return;
+		}
+
+		$scope           = end( $this->location );
+		$uses            = $scope->getAttribute( 'wp_parser_uses', array() );
+		$uses[ $type ][] = $item;
+		$scope->setAttribute( 'wp_parser_uses', $uses );
+	}
+
+	/**
+	 * Tell each method call within a class which class it was made in.
+	 *
+	 * @param Node\Stmt\Class_ $node
+	 * @param Class_Reflector  $class
+	 */
+	protected function set_called_in_class( Node\Stmt\Class_ $node, Class_Reflector $class ) {
+		foreach ( $node->getMethods() as $method ) {
+			$uses = $method->getAttribute( 'wp_parser_uses' );
+
+			if ( empty( $uses['methods'] ) ) {
+				continue;
+			}
+
+			foreach ( $uses['methods'] as $call ) {
+				if ( $call instanceof Method_Call_Reflector ) {
+					$call->set_class( $class );
+				}
+			}
+		}
+	}
+
+	/**
+	 * Whether a function call is a WordPress hook declaration.
+	 *
+	 * @param Node\Expr\FuncCall $node
+	 *
+	 * @return bool
+	 */
+	protected function is_filter( Node\Expr\FuncCall $node ) {
+		if ( ! ( $node->name instanceof Node\Name ) ) {
+			return false;
+		}
+
+		$functions = array(
+			'apply_filters',
+			'apply_filters_ref_array',
+			'apply_filters_deprecated',
+			'do_action',
+			'do_action_ref_array',
+			'do_action_deprecated',
+		);
+
+		return in_array( (string) $node->name, $functions, true );
+	}
+
+	/**
+	 * Whether a node is a documentable structural element (or a hook).
+	 *
+	 * @param Node $node
+	 *
+	 * @return bool
+	 */
+	protected function is_node_documentable( Node $node ) {
+		return $node instanceof Node\Stmt\Function_
+			|| $node instanceof Node\Stmt\ClassLike
+			|| $node instanceof Node\Stmt\ClassMethod
+			|| $node instanceof Node\Stmt\Property
+			|| $node instanceof Node\Stmt\ClassConst
+			|| $node instanceof Node\Stmt\Const_
+			|| ( $node instanceof Node\Expr\FuncCall && $this->is_filter( $node ) );
 	}
 
 	/**
@@ -257,5 +394,31 @@ class File_Reflector extends NodeVisitorAbstract {
 	 */
 	public function getIncludes() {
 		return $this->includes;
+	}
+}
+
+/**
+ * Replaces class-position names (static calls, `new`, class-const/static-property
+ * fetches, instanceof) with their resolved fully-qualified form, so they render
+ * with a leading backslash when pretty printed — while leaving function/constant
+ * names untouched. This reproduces the legacy php-parser 1 name-resolution output.
+ */
+class Class_Name_Resolver extends NodeVisitorAbstract {
+
+	public function enterNode( Node $node ) {
+		$is_class_ref = $node instanceof Node\Expr\StaticCall
+			|| $node instanceof Node\Expr\New_
+			|| $node instanceof Node\Expr\ClassConstFetch
+			|| $node instanceof Node\Expr\StaticPropertyFetch
+			|| $node instanceof Node\Expr\Instanceof_;
+
+		if ( $is_class_ref && $node->class instanceof Node\Name ) {
+			$resolved = $node->class->getAttribute( 'resolvedName' );
+			if ( null !== $resolved ) {
+				$node->class = $resolved;
+			}
+		}
+
+		return null;
 	}
 }
