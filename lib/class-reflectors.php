@@ -415,3 +415,61 @@ class Property_Reflector {
 		return Docblock_Adapter::from_node( $this->stmt, $this->namespace, $this->aliases );
 	}
 }
+
+/**
+ * Reflects a single include/require statement, exposing the surface runner.php
+ * reads. The type is the legacy human-readable label ("Include", "Require Once").
+ */
+class Include_Reflector {
+
+	protected $name;
+	protected $line;
+	protected $type;
+
+	public function __construct( $name, $line, $type ) {
+		$this->name = $name;
+		$this->line = $line;
+		$this->type = $type;
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+	public function getLineNumber() {
+		return $this->line;
+	}
+
+	public function getType() {
+		return $this->type;
+	}
+}
+
+/**
+ * Reflects a file-level constant — a define() call or the const keyword — exposing
+ * the surface runner.php reads. The value is the pretty-printed default expression.
+ */
+class Constant_Reflector {
+
+	protected $name;
+	protected $line;
+	protected $value;
+
+	public function __construct( $name, $line, $value ) {
+		$this->name  = $name;
+		$this->line  = $line;
+		$this->value = $value;
+	}
+
+	public function getShortName() {
+		return $this->name;
+	}
+
+	public function getLineNumber() {
+		return $this->line;
+	}
+
+	public function getValue() {
+		return $this->value;
+	}
+}

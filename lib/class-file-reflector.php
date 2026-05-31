@@ -156,6 +156,22 @@ class File_Reflector extends NodeVisitorAbstract {
 			$this->add_use( 'methods', new Method_Call_Reflector( $node ) );
 		}
 
+		// Record file includes and constants (define() and the const keyword),
+		// captured wherever they appear — matching the legacy FileReflector output.
+		if ( $node instanceof Node\Expr\Include_ ) {
+			$this->add_include( $node );
+		} elseif ( $node instanceof Node\Expr\FuncCall && $this->is_define( $node ) ) {
+			$this->add_define( $node );
+		} elseif ( $node instanceof Node\Stmt\Const_ ) {
+			foreach ( $node->consts as $const ) {
+				$this->constants[] = new Constant_Reflector(
+					$const->name->toString(),
+					$const->getStartLine(),
+					Reflector_Helpers::default_value( $const->value )
+				);
+			}
+		}
+
 		// Carry a docblock from a non-documentable node to the next hook.
 		if ( ! $this->is_node_documentable( $node )
 			&& ! ( $node instanceof Node\Name )
@@ -214,6 +230,59 @@ class File_Reflector extends NodeVisitorAbstract {
 		$uses            = $scope->getAttribute( 'wp_parser_uses', array() );
 		$uses[ $type ][] = $item;
 		$scope->setAttribute( 'wp_parser_uses', $uses );
+	}
+
+	/**
+	 * Record an include/require statement with the legacy "Include"/"Require" (Once)
+	 * type label. The name is the literal path when written as a plain string, or ''
+	 * for a computed expression (e.g. dirname( __FILE__ ) . '/bootstrap.php').
+	 *
+	 * @param Node\Expr\Include_ $node
+	 */
+	protected function add_include( Node\Expr\Include_ $node ) {
+		static $types = array(
+			Node\Expr\Include_::TYPE_INCLUDE      => 'Include',
+			Node\Expr\Include_::TYPE_INCLUDE_ONCE => 'Include Once',
+			Node\Expr\Include_::TYPE_REQUIRE      => 'Require',
+			Node\Expr\Include_::TYPE_REQUIRE_ONCE => 'Require Once',
+		);
+
+		$this->includes[] = new Include_Reflector(
+			$node->expr instanceof Node\Scalar\String_ ? $node->expr->value : '',
+			$node->getStartLine(),
+			isset( $types[ $node->type ] ) ? $types[ $node->type ] : ''
+		);
+	}
+
+	/**
+	 * Whether a function call is a call to define().
+	 *
+	 * @param Node\Expr\FuncCall $node
+	 * @return bool
+	 */
+	protected function is_define( Node\Expr\FuncCall $node ) {
+		return $node->name instanceof Node\Name
+			&& 'define' === strtolower( ltrim( $node->name->toString(), '\\' ) );
+	}
+
+	/**
+	 * Record a constant declared via define( 'NAME', value ). Only a string-literal
+	 * name is recorded, matching the legacy parser (a computed name has no short name).
+	 *
+	 * @param Node\Expr\FuncCall $node
+	 */
+	protected function add_define( Node\Expr\FuncCall $node ) {
+		$args = $node->getArgs();
+
+		if ( ! isset( $args[0], $args[1] ) || ! ( $args[0]->value instanceof Node\Scalar\String_ ) ) {
+			return;
+		}
+
+		$this->constants[] = new Constant_Reflector(
+			$args[0]->value->value,
+			$node->getStartLine(),
+			Reflector_Helpers::default_value( $args[1]->value )
+		);
 	}
 
 	/**
@@ -329,10 +398,12 @@ class File_Reflector extends NodeVisitorAbstract {
 			return Docblock_Adapter::from_text( $docs[0]->getText(), 'global', array() );
 		}
 
-		// A single docblock before a non-structural statement floats to the file only
-		// when it is attached to the open tag (no blank line after `<?php`), matching
-		// the legacy parser. A blank line makes it belong to the following code.
-		if ( 1 === count( $docs ) && ! $this->is_structural( $first ) && $docs[0]->getStartLine() <= 2 ) {
+		// A single docblock floats to the file only when it is attached to the open
+		// tag (no blank line after `<?php`) AND the first statement does not claim it.
+		// A blank line, or a claiming statement (function/class/const, hook, define(),
+		// or include/require), makes the docblock belong to the code instead — matching
+		// the legacy parser.
+		if ( 1 === count( $docs ) && ! $this->claims_docblock( $first ) && $docs[0]->getStartLine() <= 2 ) {
 			return Docblock_Adapter::from_text( $docs[0]->getText(), 'global', array() );
 		}
 
@@ -358,14 +429,32 @@ class File_Reflector extends NodeVisitorAbstract {
 	}
 
 	/**
-	 * Whether a node is a documentable structural element.
+	 * Whether the first statement in a file claims a preceding docblock as its own,
+	 * keeping that docblock from floating up to become the file docblock. The legacy
+	 * parser reflects — and so attaches the docblock to — structural elements
+	 * (function/class/const), hooks, define() constants, and include/require, but
+	 * not plain function calls or assignments.
 	 *
 	 * @param Node $node
 	 *
 	 * @return bool
 	 */
-	protected function is_structural( Node $node ) {
-		return $node instanceof Node\Stmt\Function_ || $node instanceof Node\Stmt\ClassLike;
+	protected function claims_docblock( Node $node ) {
+		if ( $node instanceof Node\Stmt\Function_
+			|| $node instanceof Node\Stmt\ClassLike
+			|| $node instanceof Node\Stmt\Const_ ) {
+			return true;
+		}
+
+		if ( $node instanceof Node\Stmt\Expression ) {
+			$expr = $node->expr;
+
+			return $expr instanceof Node\Expr\Include_
+				|| ( $expr instanceof Node\Expr\FuncCall
+					&& ( $this->is_filter( $expr ) || $this->is_define( $expr ) ) );
+		}
+
+		return false;
 	}
 
 	/**

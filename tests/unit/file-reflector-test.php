@@ -136,4 +136,36 @@ class File_Reflector_Test extends TestCase {
 		$this->assertSame( '$id', $arguments[1]->getName() );
 		$this->assertSame( 'int|string', $arguments[1]->getType() );
 	}
+
+	public function test_file_docblock_claimed_by_first_statement() {
+		// A docblock attached to the open tag (line <= 2) floats up to the file only
+		// when the first statement does not claim it. Hooks, define(), and require/
+		// include claim it; plain calls and assignments do not. Matches the legacy
+		// parser (see the filters/actions/constants-includes golden fixtures).
+		$cases = array(
+			"apply_filters( 'h', \$x );" => '',     // hook claims it
+			"define( 'X', 1 );"          => '',     // constant claims it
+			"require_once 'x.php';"      => '',     // include claims it
+			"my_func( \$x );"            => 'Doc.', // plain call: floats to the file
+			"\$x = 1;"                   => 'Doc.', // assignment: floats to the file
+		);
+
+		foreach ( $cases as $statement => $expected ) {
+			$tmp = tempnam( sys_get_temp_dir(), 'wpp' );
+			file_put_contents( $tmp, "<?php\n/**\n * Doc.\n */\n{$statement}\n" );
+
+			try {
+				$file = new File_Reflector( $tmp );
+				$file->setFilename( 'fd.php' );
+				$file->process();
+			} finally {
+				unlink( $tmp );
+			}
+
+			$doc    = $file->getDocBlock();
+			$actual = $doc ? $doc->getShortDescription() : '';
+
+			$this->assertSame( $expected, $actual, "first statement: {$statement}" );
+		}
+	}
 }
