@@ -78,7 +78,12 @@ class Reflector_Helpers {
 			return implode( '&', array_map( array( self::class, 'type_string' ), $type->types ) );
 		}
 
-		// Identifier or Name.
+		// Class-name types resolve to the legacy "\Fully\Qualified" form; built-in
+		// Identifier types (int, string, array, void, …) stay bare.
+		if ( $type instanceof Node\Name ) {
+			return self::class_name( $type );
+		}
+
 		return $type->toString();
 	}
 

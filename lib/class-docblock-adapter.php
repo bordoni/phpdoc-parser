@@ -143,9 +143,13 @@ class Docblock_Adapter {
 			return new Version_Tag_Adapter( $name, $description, (string) $tag->getVersion() );
 		}
 
-		// @see: a reference.
+		// @see: a reference. reflection-docblock normalizes the target to an FQSEN
+		// (always leading-backslash); the legacy parser kept it as written, so undo
+		// the single normalization backslash to match.
 		if ( $tag instanceof Tags\See ) {
-			return new See_Tag_Adapter( $name, $description, (string) $tag->getReference() );
+			$reference = preg_replace( '/^\\\\/', '', (string) $tag->getReference() );
+
+			return new See_Tag_Adapter( $name, $description, $reference );
 		}
 
 		// @link: a URL. When no description is given the URL itself is the content.
