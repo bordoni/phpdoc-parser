@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	WordPress-free unit suite for the modern parser building blocks (pretty
+	printer, name resolution, docblock adapter, reflectors). Needs only Composer's
+	autoloader, so it stays green throughout the rewrite.
+
+	Run:  ./vendor/bin/phpunit -c phpunit-unit.xml.dist
+-->
+<phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
+	bootstrap="tests/unit/bootstrap.php"
+	colors="true"
+	failOnWarning="true"
+	failOnRisky="true"
+	beStrictAboutTestsThatDoNotTestAnything="true"
+	>
+	<testsuites>
+		<testsuite name="unit">
+			<directory suffix="-test.php">tests/unit</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>
