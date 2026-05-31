@@ -3,10 +3,9 @@
  * Lightweight structural reflectors built on nikic/php-parser 5 nodes.
  *
  * These replace the slice of the phpDocumentor 3 reflector API that runner.php
- * consumes (getShortName/getNamespace/getArguments/...), keeping the exported
- * array shape identical. Each wraps a php-parser node and exposes only what the
- * exporter needs. DocBlock parsing is added by the docblock adapter (Stage 5);
- * getDocBlock() returns null until then.
+ * consumes (getShortName/getNamespace/getArguments/getDocBlock/...), keeping the
+ * exported array shape identical. Each wraps a php-parser node and exposes only
+ * what the exporter needs. Docblocks are parsed lazily via Docblock_Adapter.
  *
  * @package WP_Parser
  */
@@ -198,7 +197,7 @@ class Function_Reflector {
 	}
 
 	public function getDocBlock() {
-		return null; // Stage 5.
+		return Docblock_Adapter::from_node( $this->node, $this->namespace, $this->aliases );
 	}
 }
 
@@ -263,7 +262,7 @@ class Class_Reflector {
 		$properties = array();
 		foreach ( $this->node->getProperties() as $property ) {
 			foreach ( $property->props as $prop ) {
-				$properties[] = new Property_Reflector( $property, $prop );
+				$properties[] = new Property_Reflector( $property, $prop, $this->namespace, $this->aliases );
 			}
 		}
 
@@ -273,14 +272,14 @@ class Class_Reflector {
 	public function getMethods() {
 		$methods = array();
 		foreach ( $this->node->getMethods() as $method ) {
-			$methods[] = new Method_Reflector( $method, $this->aliases );
+			$methods[] = new Method_Reflector( $method, $this->namespace, $this->aliases );
 		}
 
 		return $methods;
 	}
 
 	public function getDocBlock() {
-		return null; // Stage 5.
+		return Docblock_Adapter::from_node( $this->node, $this->namespace, $this->aliases );
 	}
 }
 
@@ -294,11 +293,15 @@ class Method_Reflector {
 
 	/** @var Node\Stmt\ClassMethod */
 	protected $node;
+
+	/** @var string Namespace used to resolve docblock types (the class's namespace). */
+	protected $resolve_namespace;
 	protected $aliases;
 
-	public function __construct( Node\Stmt\ClassMethod $node, array $aliases ) {
-		$this->node    = $node;
-		$this->aliases = $aliases;
+	public function __construct( Node\Stmt\ClassMethod $node, $resolve_namespace, array $aliases ) {
+		$this->node              = $node;
+		$this->resolve_namespace = $resolve_namespace;
+		$this->aliases           = $aliases;
 	}
 
 	public function getShortName() {
@@ -342,7 +345,7 @@ class Method_Reflector {
 	}
 
 	public function getDocBlock() {
-		return null; // Stage 5.
+		return Docblock_Adapter::from_node( $this->node, $this->resolve_namespace, $this->aliases );
 	}
 }
 
@@ -357,9 +360,14 @@ class Property_Reflector {
 	/** @var Node\PropertyItem|object The individual property within the declaration. */
 	protected $prop;
 
-	public function __construct( Node\Stmt\Property $stmt, $prop ) {
-		$this->stmt = $stmt;
-		$this->prop = $prop;
+	protected $namespace;
+	protected $aliases;
+
+	public function __construct( Node\Stmt\Property $stmt, $prop, $namespace, array $aliases ) {
+		$this->stmt      = $stmt;
+		$this->prop      = $prop;
+		$this->namespace = $namespace;
+		$this->aliases   = $aliases;
 	}
 
 	public function getName() {
@@ -387,6 +395,6 @@ class Property_Reflector {
 	}
 
 	public function getDocBlock() {
-		return null; // Stage 5.
+		return Docblock_Adapter::from_node( $this->stmt, $this->namespace, $this->aliases );
 	}
 }

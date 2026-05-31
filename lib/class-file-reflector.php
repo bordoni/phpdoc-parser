@@ -2,6 +2,7 @@
 
 namespace WP_Parser;
 
+use PhpParser\Comment\Doc;
 use PhpParser\Node;
 use PhpParser\NodeTraverser;
 use PhpParser\NodeVisitor\NameResolver;
@@ -40,6 +41,9 @@ class File_Reflector extends NodeVisitorAbstract {
 
 	protected $constants = array();
 	protected $includes  = array();
+
+	/** @var Docblock_Adapter|null The file-level docblock, if any. */
+	protected $file_docblock = null;
 
 	/** @var string Current namespace ('global' at file scope). */
 	protected $namespace = 'global';
@@ -86,6 +90,8 @@ class File_Reflector extends NodeVisitorAbstract {
 		if ( null === $stmts ) {
 			return;
 		}
+
+		$this->file_docblock = $this->detect_file_docblock( $stmts );
 
 		$traverser = new NodeTraverser();
 		// replaceNodes:false keeps the original Name nodes and attaches resolved
@@ -137,12 +143,92 @@ class File_Reflector extends NodeVisitorAbstract {
 	}
 
 	/**
-	 * The file-level docblock. Added with the docblock adapter (Stage 5).
+	 * The file-level docblock, or null when the file has none.
 	 *
-	 * @return null
+	 * @return Docblock_Adapter|null
 	 */
 	public function getDocBlock() {
+		return $this->file_docblock;
+	}
+
+	/**
+	 * Detect the file-level docblock.
+	 *
+	 * The file docblock is the first docblock in the file, unless that docblock
+	 * directly documents the first structural element (function/class/...). So a
+	 * lone docblock before a `function`/`class` belongs to that element, but a
+	 * docblock before a non-structural statement (or a second docblock preceding
+	 * the first element) floats to the file.
+	 *
+	 * @param Node[] $stmts
+	 *
+	 * @return Docblock_Adapter|null
+	 */
+	protected function detect_file_docblock( array $stmts ) {
+		if ( empty( $stmts ) ) {
+			return null;
+		}
+
+		$first = $stmts[0];
+
+		// A docblock attached before a `namespace` declaration is a file docblock.
+		if ( $first instanceof Node\Stmt\Namespace_ ) {
+			$docs = $this->doc_comments( $first );
+			if ( ! empty( $docs ) ) {
+				return Docblock_Adapter::from_text( $docs[0]->getText(), 'global', array() );
+			}
+
+			if ( empty( $first->stmts ) ) {
+				return null;
+			}
+
+			$first = $first->stmts[0];
+		}
+
+		$docs = $this->doc_comments( $first );
+
+		// Two docblocks before the first element: the first one is the file docblock.
+		if ( count( $docs ) >= 2 ) {
+			return Docblock_Adapter::from_text( $docs[0]->getText(), 'global', array() );
+		}
+
+		// A single docblock before a non-structural statement floats to the file only
+		// when it is attached to the open tag (no blank line after `<?php`), matching
+		// the legacy parser. A blank line makes it belong to the following code.
+		if ( 1 === count( $docs ) && ! $this->is_structural( $first ) && $docs[0]->getStartLine() <= 2 ) {
+			return Docblock_Adapter::from_text( $docs[0]->getText(), 'global', array() );
+		}
+
 		return null;
+	}
+
+	/**
+	 * The Doc comments attached to a node, in source order.
+	 *
+	 * @param Node $node
+	 *
+	 * @return Doc[]
+	 */
+	protected function doc_comments( Node $node ) {
+		$docs = array();
+		foreach ( $node->getComments() as $comment ) {
+			if ( $comment instanceof Doc ) {
+				$docs[] = $comment;
+			}
+		}
+
+		return $docs;
+	}
+
+	/**
+	 * Whether a node is a documentable structural element.
+	 *
+	 * @param Node $node
+	 *
+	 * @return bool
+	 */
+	protected function is_structural( Node $node ) {
+		return $node instanceof Node\Stmt\Function_ || $node instanceof Node\Stmt\ClassLike;
 	}
 
 	/**
