@@ -1,7 +1,6 @@
 {
   "phpVersion": "8.2",
   "plugins": [
-    ".",
-    "https://downloads.wordpress.org/plugin/posts-to-posts.latest-stable.zip"
+    "."
   ]
 }
