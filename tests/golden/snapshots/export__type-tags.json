@@ -1,0 +1,296 @@
+[
+    {
+        "file": {
+            "description": "Test file for @type tag handling.",
+            "long_description": "",
+            "tags": [
+                {
+                    "name": "since",
+                    "content": "1.0.0"
+                }
+            ]
+        },
+        "path": "type-tags.inc",
+        "root": "{{ROOT}}",
+        "functions": [
+            {
+                "name": "function_with_hash_notation",
+                "namespace": "global",
+                "aliases": [],
+                "line": 23,
+                "end_line": 25,
+                "arguments": [
+                    {
+                        "name": "$args",
+                        "default": null,
+                        "type": ""
+                    }
+                ],
+                "doc": {
+                    "description": "Function with hash notation in @param.",
+                    "long_description": "",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.0.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "{     Optional. Array of arguments.<br>    @type bool   $enabled   Whether the feature is enabled. Default false.<br>    @type string $label     The label to display.<br>    @type int    $max_items Maximum number of items. Default 10.<br>}",
+                            "types": [
+                                "array"
+                            ],
+                            "variable": "$args"
+                        },
+                        {
+                            "name": "return",
+                            "content": "True on success.",
+                            "types": [
+                                "bool"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            },
+            {
+                "name": "function_with_multiple_hash_params",
+                "namespace": "global",
+                "aliases": [],
+                "line": 45,
+                "end_line": 46,
+                "arguments": [
+                    {
+                        "name": "$options",
+                        "default": null,
+                        "type": ""
+                    },
+                    {
+                        "name": "$settings",
+                        "default": null,
+                        "type": ""
+                    }
+                ],
+                "doc": {
+                    "description": "Function with multiple hash notation params.",
+                    "long_description": "",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.0.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "{     Configuration options.<br>    @type string $name   The name.<br>    @type int    $count  The count.<br>}",
+                            "types": [
+                                "array"
+                            ],
+                            "variable": "$options"
+                        },
+                        {
+                            "name": "param",
+                            "content": "{     Additional settings.<br>    @type bool $active Whether active.<br>}",
+                            "types": [
+                                "array"
+                            ],
+                            "variable": "$settings"
+                        },
+                        {
+                            "name": "return",
+                            "content": "",
+                            "types": [
+                                "void"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            },
+            {
+                "name": "function_with_simple_params",
+                "namespace": "global",
+                "aliases": [],
+                "line": 57,
+                "end_line": 59,
+                "arguments": [
+                    {
+                        "name": "$name",
+                        "default": null,
+                        "type": ""
+                    },
+                    {
+                        "name": "$count",
+                        "default": null,
+                        "type": ""
+                    }
+                ],
+                "doc": {
+                    "description": "Function with simple params (no hash notation).",
+                    "long_description": "",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.0.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The name.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$name"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The count.",
+                            "types": [
+                                "int"
+                            ],
+                            "variable": "$count"
+                        },
+                        {
+                            "name": "return",
+                            "content": "Success.",
+                            "types": [
+                                "bool"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            },
+            {
+                "name": "function_with_return_hash",
+                "namespace": "global",
+                "aliases": [],
+                "line": 74,
+                "end_line": 76,
+                "arguments": [],
+                "doc": {
+                    "description": "Function with hash notation in @return.",
+                    "long_description": "",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.0.0"
+                        },
+                        {
+                            "name": "return",
+                            "content": "{     Result data.<br>    @type int[]    $updated An array of updated IDs.<br>    @type int[]    $skipped An array of skipped IDs.<br>    @type string[] $errors  An array of error messages.<br>}",
+                            "types": [
+                                "array"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            },
+            {
+                "name": "function_with_param_and_return_hash",
+                "namespace": "global",
+                "aliases": [],
+                "line": 96,
+                "end_line": 98,
+                "arguments": [
+                    {
+                        "name": "$options",
+                        "default": null,
+                        "type": ""
+                    }
+                ],
+                "doc": {
+                    "description": "Function with hash notation in both @param and @return.",
+                    "long_description": "",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.0.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "{     Input options.<br>    @type string $mode   The processing mode.<br>    @type bool   $force  Whether to force the operation.<br>}",
+                            "types": [
+                                "array"
+                            ],
+                            "variable": "$options"
+                        },
+                        {
+                            "name": "return",
+                            "content": "{     Output data.<br>    @type bool   $success Whether the operation succeeded.<br>    @type string $message A status message.<br>}",
+                            "types": [
+                                "array"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            },
+            {
+                "name": "function_with_mixed_params",
+                "namespace": "global",
+                "aliases": [],
+                "line": 115,
+                "end_line": 117,
+                "arguments": [
+                    {
+                        "name": "$name",
+                        "default": null,
+                        "type": ""
+                    },
+                    {
+                        "name": "$config",
+                        "default": null,
+                        "type": ""
+                    },
+                    {
+                        "name": "$limit",
+                        "default": null,
+                        "type": ""
+                    }
+                ],
+                "doc": {
+                    "description": "Function with mixed params: some with hash, some without.",
+                    "long_description": "",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.0.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Simple string param.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$name"
+                        },
+                        {
+                            "name": "param",
+                            "content": "{     Configuration array.<br>    @type int  $timeout Timeout in seconds.<br>    @type bool $retry   Whether to retry on failure.<br>}",
+                            "types": [
+                                "array"
+                            ],
+                            "variable": "$config"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Simple int param.",
+                            "types": [
+                                "int"
+                            ],
+                            "variable": "$limit"
+                        },
+                        {
+                            "name": "return",
+                            "content": "Success.",
+                            "types": [
+                                "bool"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            }
+        ]
+    }
+]

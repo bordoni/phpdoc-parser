@@ -68,4 +68,44 @@ class Docblock_Adapter_Test extends TestCase {
 		$this->assertSame( 'URL', $tags[1]->getLink() );
 		$this->assertSame( 'URL', $tags[1]->getDescription() );
 	}
+
+	/**
+	 * A @see target reflection-docblock recognizes as an FQSEN comes back normalized
+	 * with a leading backslash; the legacy parser kept it as written, so the adapter
+	 * strips the single normalization backslash. (Golden: tests/.../export/docblocks.)
+	 */
+	public function test_see_fqsen_reference_drops_normalization_backslash() {
+		$db = $this->doc( "/**\n * S.\n *\n * @see self::other_method() The description.\n */" );
+
+		$tags = $db->getTags();
+
+		$this->assertSame( 'see', $tags[0]->getName() );
+		$this->assertSame( 'self::other_method()', $tags[0]->getReference() );
+		$this->assertSame( 'The description.', $tags[0]->getDescription() );
+	}
+
+	/**
+	 * Modern @param type syntaxes the legacy parser mangled (a leading "?" nullable
+	 * and parenthesized unions) — reflection-docblock 6 parses them correctly. The
+	 * old parser produced garbage for these, so they are excluded from the byte-for-
+	 * byte golden suite and locked here instead. Class names still resolve to the
+	 * leading-backslash FQN form the legacy output used.
+	 */
+	public function test_modern_param_type_syntax() {
+		$db = $this->doc(
+			"/**\n * S.\n *\n"
+			. " * @param ?string \$nullable_string A nullable string.\n"
+			. " * @param ( WP_Post | null ) \$nullable_post A nullable post.\n */"
+		);
+
+		$tags = $db->getTags();
+
+		$this->assertSame( 'param', $tags[0]->getName() );
+		$this->assertSame( array( '?string' ), $tags[0]->getTypes() );
+		$this->assertSame( '$nullable_string', $tags[0]->getVariableName() );
+
+		$this->assertSame( 'param', $tags[1]->getName() );
+		$this->assertSame( array( '\\WP_Post', 'null' ), $tags[1]->getTypes() );
+		$this->assertSame( '$nullable_post', $tags[1]->getVariableName() );
+	}
 }

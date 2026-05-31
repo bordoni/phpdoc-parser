@@ -109,4 +109,31 @@ class File_Reflector_Test extends TestCase {
 		$this->assertSame( '', $name[0] ); // Anonymous class — no name.
 		$this->assertSame( '__construct', $name[1] );
 	}
+
+	public function test_handles_modern_typehints() {
+		// The legacy php-parser v1 fataled on nullable typehints, so there is no
+		// golden oracle for these — reproducing them is the migration's whole point.
+		// Nullable and union typehints (and return types) must parse, and class names
+		// resolve to the leading-backslash FQN form the legacy output used elsewhere.
+		$tmp = tempnam( sys_get_temp_dir(), 'wpp' );
+		file_put_contents(
+			$tmp,
+			"<?php\nfunction modern( ?WP_Post \$post, int|string \$id ): array {\n\treturn array();\n}\n"
+		);
+
+		try {
+			$file = new File_Reflector( $tmp );
+			$file->setFilename( 'modern.php' );
+			$file->process();
+		} finally {
+			unlink( $tmp );
+		}
+
+		$arguments = $file->getFunctions()[0]->getArguments();
+
+		$this->assertSame( '$post', $arguments[0]->getName() );
+		$this->assertSame( '?\\WP_Post', $arguments[0]->getType() );
+		$this->assertSame( '$id', $arguments[1]->getName() );
+		$this->assertSame( 'int|string', $arguments[1]->getType() );
+	}
 }

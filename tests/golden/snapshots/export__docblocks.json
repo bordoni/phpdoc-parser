@@ -16,36 +16,36 @@
             "functions": [
                 {
                     "name": "apply_filters",
-                    "line": 69,
-                    "end_line": 69
+                    "line": 100,
+                    "end_line": 100
                 },
                 {
                     "name": "apply_filters_ref_array",
-                    "line": 74,
-                    "end_line": 74
+                    "line": 105,
+                    "end_line": 105
                 },
                 {
                     "name": "do_action",
-                    "line": 83,
-                    "end_line": 83
+                    "line": 114,
+                    "end_line": 114
                 },
                 {
                     "name": "do_action",
-                    "line": 85,
-                    "end_line": 85
+                    "line": 116,
+                    "end_line": 116
                 },
                 {
                     "name": "do_action_ref_array",
-                    "line": 90,
-                    "end_line": 90
+                    "line": 121,
+                    "end_line": 121
                 }
             ]
         },
         "hooks": [
             {
                 "name": "test_filter",
-                "line": 69,
-                "end_line": 69,
+                "line": 100,
+                "end_line": 100,
                 "type": "filter",
                 "arguments": [
                     "$var"
@@ -58,8 +58,8 @@
             },
             {
                 "name": "test_ref_array_filter",
-                "line": 74,
-                "end_line": 74,
+                "line": 105,
+                "end_line": 105,
                 "type": "filter_reference",
                 "arguments": [
                     "array(&$var)"
@@ -72,8 +72,8 @@
             },
             {
                 "name": "test_action",
-                "line": 83,
-                "end_line": 83,
+                "line": 114,
+                "end_line": 114,
                 "type": "action",
                 "arguments": [
                     "$post"
@@ -99,8 +99,8 @@
             },
             {
                 "name": "undocumented_hook",
-                "line": 85,
-                "end_line": 85,
+                "line": 116,
+                "end_line": 116,
                 "type": "action",
                 "arguments": [],
                 "doc": {
@@ -111,8 +111,8 @@
             },
             {
                 "name": "test_ref_array_action",
-                "line": 90,
-                "end_line": 90,
+                "line": 121,
+                "end_line": 121,
                 "type": "action_reference",
                 "arguments": [
                     "array(&$var)"
@@ -177,6 +177,20 @@
                     ]
                 },
                 "hooks": []
+            },
+            {
+                "name": "test_markdown_in_description",
+                "namespace": "global",
+                "aliases": [],
+                "line": 144,
+                "end_line": 146,
+                "arguments": [],
+                "doc": {
+                    "description": "This method has all kinds of _\"markdown formatting\"_, many of which are not supported.",
+                    "long_description": "<p>Example <code>code</code>:</p> <pre><code>foo();\nbar();</code></pre> <p>Lists:</p> <ul> <li>Item 1</li> <li>Item 2</li> </ul> <p>This is a quote:</p> <blockquote> <p>Quoted Content.<br>On multiple lines.</p> </blockquote> <h2>Inline Formatting includes Headings.</h2> <p>There's also <em>italics</em> and <strong>bold</strong>.</p>",
+                    "tags": []
+                },
+                "hooks": []
             }
         ],
         "classes": [
@@ -184,7 +198,7 @@
                 "name": "Test_Class",
                 "namespace": "global",
                 "line": 40,
-                "end_line": 64,
+                "end_line": 95,
                 "final": false,
                 "abstract": false,
                 "extends": "",
@@ -269,6 +283,92 @@
                                     "content": "The first param.",
                                     "types": [
                                         "mixed"
+                                    ]
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "test_method_see",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 71,
+                        "end_line": 72,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "A test method that contains various @see.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "see",
+                                    "content": "",
+                                    "refers": "self::test_method_typed_hash()"
+                                },
+                                {
+                                    "name": "see",
+                                    "content": "The WordPress Foundation.",
+                                    "refers": "https://wordpressfoundation.org/"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "test_method_typed_hash",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 91,
+                        "end_line": 93,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$hashed_array",
+                                "default": null,
+                                "type": "array"
+                            },
+                            {
+                                "name": "$post_or_user",
+                                "default": null,
+                                "type": ""
+                            },
+                            {
+                                "name": "$nullable_post",
+                                "default": null,
+                                "type": "\\WP_Post"
+                            }
+                        ],
+                        "doc": {
+                            "description": "This is a method that has a param with multiple types within.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "param",
+                                    "content": "{    The parameters for this function.<br>   @type int $time The current epoch.<br>   @type ?string $nullable_string A nullable string.<br>   @type string|array List of items:<br>                      - 'item1'<br>                      - 'item2'                       Default is 'item1'.<br>}",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": "$hashed_array"
+                                },
+                                {
+                                    "name": "param",
+                                    "content": "A Post or User.",
+                                    "types": [
+                                        "\\WP_Post",
+                                        "\\WP_User"
+                                    ],
+                                    "variable": "$post_or_user"
+                                },
+                                {
+                                    "name": "return",
+                                    "content": "An empty array.",
+                                    "types": [
+                                        "array"
                                     ]
                                 }
                             ]
