@@ -20,8 +20,15 @@ if ( class_exists( 'WP_Parser\Plugin' ) ) {
 	$wp_parser->on_load();
 }
 
-register_activation_hook( __FILE__, array( 'P2P_Storage', 'init' ) );
-register_activation_hook( __FILE__, array( 'P2P_Storage', 'install' ) );
+register_activation_hook( __FILE__, function () {
+	// The bundled Posts-to-Posts library may not be loaded at activation time
+	// (e.g. before Composer dependencies are installed in CI). Relationships also
+	// creates these tables on demand, so guard against a fatal here.
+	if ( class_exists( 'P2P_Storage' ) ) {
+		\P2P_Storage::init();
+		\P2P_Storage::install();
+	}
+} );
 
 // TODO safer handling for uninstall
 //register_uninstall_hook( __FILE__, array( 'P2P_Storage', 'uninstall' ) );
