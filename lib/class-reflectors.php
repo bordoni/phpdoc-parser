@@ -212,6 +212,11 @@ class Function_Reflector {
 		return $this->namespace;
 	}
 
+	/**
+	 * The namespace aliases in scope, fully-qualified for export (alias => "\FQN").
+	 *
+	 * @return array
+	 */
 	public function getNamespaceAliases() {
 		return Reflector_Helpers::export_aliases( $this->aliases );
 	}
@@ -341,12 +346,21 @@ class Method_Reflector {
 		return $this->node->name->toString();
 	}
 
+	/**
+	 * The method's enclosing namespace. The global namespace is reported as ''
+	 * (not 'global', unlike functions and classes), matching the legacy output.
+	 *
+	 * @return string
+	 */
 	public function getNamespace() {
-		// A method carries its enclosing namespace; the global namespace is reported
-		// as '' (not 'global', unlike functions/classes), matching the legacy output.
 		return 'global' === $this->resolve_namespace ? '' : $this->resolve_namespace;
 	}
 
+	/**
+	 * The namespace aliases in scope, fully-qualified for export (alias => "\FQN").
+	 *
+	 * @return array
+	 */
 	public function getNamespaceAliases() {
 		return Reflector_Helpers::export_aliases( $this->aliases );
 	}
@@ -440,24 +454,43 @@ class Property_Reflector {
  */
 class Include_Reflector {
 
+	/** @var string The included path when written as a string literal, or '' when computed. */
 	protected $name;
+
+	/** @var int The line the include/require appears on. */
 	protected $line;
+
+	/** @var string The legacy type label ("Include", "Include Once", "Require", "Require Once"). */
 	protected $type;
 
+	/**
+	 * @param string $name The included path, or '' for a computed expression.
+	 * @param int    $line The line number.
+	 * @param string $type The legacy type label.
+	 */
 	public function __construct( $name, $line, $type ) {
 		$this->name = $name;
 		$this->line = $line;
 		$this->type = $type;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getName() {
 		return $this->name;
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getLineNumber() {
 		return $this->line;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getType() {
 		return $this->type;
 	}
@@ -469,24 +502,43 @@ class Include_Reflector {
  */
 class Constant_Reflector {
 
+	/** @var string The constant's name (the define() name, or the const keyword identifier). */
 	protected $name;
+
+	/** @var int The line the constant is declared on. */
 	protected $line;
+
+	/** @var string The pretty-printed value expression. */
 	protected $value;
 
+	/**
+	 * @param string $name  The constant name.
+	 * @param int    $line  The line number.
+	 * @param string $value The pretty-printed value expression.
+	 */
 	public function __construct( $name, $line, $value ) {
 		$this->name  = $name;
 		$this->line  = $line;
 		$this->value = $value;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getShortName() {
 		return $this->name;
 	}
 
+	/**
+	 * @return int
+	 */
 	public function getLineNumber() {
 		return $this->line;
 	}
 
+	/**
+	 * @return string
+	 */
 	public function getValue() {
 		return $this->value;
 	}
