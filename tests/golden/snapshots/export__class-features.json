@@ -1,0 +1,161 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "class-features.inc",
+        "root": "{{ROOT}}",
+        "classes": [
+            {
+                "name": "Base_Thing",
+                "namespace": "global",
+                "line": 6,
+                "end_line": 24,
+                "final": false,
+                "abstract": true,
+                "extends": "\\Parent_Thing",
+                "implements": [
+                    "\\Interface_One",
+                    "\\Interface_Two"
+                ],
+                "properties": [
+                    {
+                        "name": "$static_prop",
+                        "line": 9,
+                        "end_line": 9,
+                        "default": "array()",
+                        "static": true,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    },
+                    {
+                        "name": "$untyped_prop",
+                        "line": 10,
+                        "end_line": 10,
+                        "default": null,
+                        "static": false,
+                        "visibility": "protected",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    },
+                    {
+                        "name": "$a",
+                        "line": 11,
+                        "end_line": 11,
+                        "default": null,
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    },
+                    {
+                        "name": "$b",
+                        "line": 11,
+                        "end_line": 11,
+                        "default": "'x'",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    }
+                ],
+                "methods": [
+                    {
+                        "name": "must_implement",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 16,
+                        "end_line": 16,
+                        "final": false,
+                        "abstract": true,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [
+                            {
+                                "name": "$arg",
+                                "default": null,
+                                "type": ""
+                            }
+                        ],
+                        "doc": {
+                            "description": "Must be implemented.",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    },
+                    {
+                        "name": "cannot_override",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 21,
+                        "end_line": 21,
+                        "final": true,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "Cannot be overridden.",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    },
+                    {
+                        "name": "static_method",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 23,
+                        "end_line": 23,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "Class features fixture.",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "Final_Thing",
+                "namespace": "global",
+                "line": 26,
+                "end_line": 28,
+                "final": true,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [],
+                "methods": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

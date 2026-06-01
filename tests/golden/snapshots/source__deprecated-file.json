@@ -1,0 +1,112 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "deprecated-file.php",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "_deprecated_file",
+                    "line": 2,
+                    "end_line": 2,
+                    "deprecation_version": "1.0"
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 23,
+                    "end_line": 23
+                },
+                {
+                    "name": "do_action",
+                    "line": 28,
+                    "end_line": 28
+                }
+            ]
+        },
+        "hooks": [
+            {
+                "name": "deprecated_filter",
+                "line": 23,
+                "end_line": 23,
+                "type": "filter",
+                "arguments": [
+                    "$var"
+                ],
+                "doc": {
+                    "description": "This filter should be marked as deprecated since 1.0",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "deprecated_action",
+                "line": 28,
+                "end_line": 28,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "This action should be marked as deprecated since 1.0",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ],
+        "functions": [
+            {
+                "name": "should_be_deprecated",
+                "namespace": "global",
+                "aliases": [],
+                "line": 18,
+                "end_line": 18,
+                "arguments": [],
+                "doc": {
+                    "description": "This function should be marked as deprecated since 1.0",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": []
+            }
+        ],
+        "classes": [
+            {
+                "name": "Should_Be_Deprectated",
+                "namespace": "global",
+                "line": 7,
+                "end_line": 13,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "should_be_deprecated",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 12,
+                        "end_line": 12,
+                        "final": false,
+                        "abstract": false,
+                        "static": false,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "This method should be marked as deprecated since 1.0",
+                            "long_description": "",
+                            "tags": []
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "This class should be marked as deprecated since 1.0",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

@@ -1,0 +1,75 @@
+[
+    {
+        "file": {
+            "description": "File summary.",
+            "long_description": "<p>This is the longer file description. It can be very long, and even span multiple lines, if hard wrapped as it should be.</p>",
+            "tags": [
+                {
+                    "name": "package",
+                    "content": "Something"
+                },
+                {
+                    "name": "since",
+                    "content": "1.0.0"
+                }
+            ]
+        },
+        "path": "file.inc",
+        "root": "{{ROOT}}",
+        "functions": [
+            {
+                "name": "wp_parser_test_func",
+                "namespace": "global",
+                "aliases": [],
+                "line": 25,
+                "end_line": 28,
+                "arguments": [
+                    {
+                        "name": "$var",
+                        "default": null,
+                        "type": ""
+                    },
+                    {
+                        "name": "$ids",
+                        "default": "array()",
+                        "type": "array"
+                    }
+                ],
+                "doc": {
+                    "description": "This is a function summary.",
+                    "long_description": "<p>This function is just here for tests. This is its longer description.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "1.4.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "A string variable which is the first parameter.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$var"
+                        },
+                        {
+                            "name": "param",
+                            "content": "An array of user IDs.",
+                            "types": [
+                                "int[]"
+                            ],
+                            "variable": "$ids"
+                        },
+                        {
+                            "name": "return",
+                            "content": "The return type is random. (Not really.)",
+                            "types": [
+                                "mixed"
+                            ]
+                        }
+                    ]
+                },
+                "hooks": []
+            }
+        ]
+    }
+]

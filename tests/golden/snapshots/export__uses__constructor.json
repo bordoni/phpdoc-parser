@@ -1,0 +1,132 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "constructor.inc",
+        "root": "{{ROOT}}",
+        "uses": {
+            "methods": [
+                {
+                    "name": "__construct",
+                    "class": "\\WP_Query",
+                    "static": false,
+                    "line": 3,
+                    "end_line": 3
+                },
+                {
+                    "name": "__construct",
+                    "class": "$class",
+                    "static": false,
+                    "line": 20,
+                    "end_line": 20
+                }
+            ]
+        },
+        "functions": [
+            {
+                "name": "test",
+                "namespace": "global",
+                "aliases": [],
+                "line": 5,
+                "end_line": 7,
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "methods": [
+                        {
+                            "name": "__construct",
+                            "class": "\\My_Class",
+                            "static": false,
+                            "line": 6,
+                            "end_line": 6
+                        }
+                    ]
+                }
+            }
+        ],
+        "classes": [
+            {
+                "name": "My_Class",
+                "namespace": "global",
+                "line": 9,
+                "end_line": 18,
+                "final": false,
+                "abstract": false,
+                "extends": "\\Parent_Class",
+                "implements": [],
+                "properties": [],
+                "methods": [
+                    {
+                        "name": "instance",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 11,
+                        "end_line": 13,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "__construct",
+                                    "class": "\\My_Class",
+                                    "static": false,
+                                    "line": 12,
+                                    "end_line": 12
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "parent",
+                        "namespace": "",
+                        "aliases": [],
+                        "line": 15,
+                        "end_line": 17,
+                        "final": false,
+                        "abstract": false,
+                        "static": true,
+                        "visibility": "public",
+                        "arguments": [],
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": []
+                        },
+                        "uses": {
+                            "methods": [
+                                {
+                                    "name": "__construct",
+                                    "class": "\\Parent_Class",
+                                    "static": false,
+                                    "line": 16,
+                                    "end_line": 16
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

@@ -1,10 +1,14 @@
 <?php
+/**
+ * A reflection of a static method-call expression, on nikic/php-parser 5.
+ *
+ * @package WP_Parser
+ */
 
 namespace WP_Parser;
 
-/**
- * A reflection of a method call expression.
- */
+use PhpParser\Node;
+
 class Static_Method_Call_Reflector extends Method_Call_Reflector {
 
 	/**
@@ -13,11 +17,9 @@ class Static_Method_Call_Reflector extends Method_Call_Reflector {
 	 * @return string[] Index 0 is the class name, 1 is the method name.
 	 */
 	public function getName() {
-		$class = $this->node->class;
-		$prefix = ( is_a( $class, 'PHPParser_Node_Name_FullyQualified' ) ) ? '\\' : '';
-		$class = $prefix . $this->_resolveName( implode( '\\', $class->parts ) );
+		$method = $this->node->name instanceof Node\Identifier ? $this->node->name->toString() : '';
 
-		return array( $class, $this->getShortName() );
+		return array( $this->resolve_caller( $this->node->class ), $method );
 	}
 
 	/**

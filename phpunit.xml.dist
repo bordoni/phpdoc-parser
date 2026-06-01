@@ -1,4 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <phpunit
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.6/phpunit.xsd"
 	bootstrap="tests/phpunit/includes/bootstrap.php"
 	backupGlobals="false"
 	colors="true"
@@ -10,9 +13,9 @@
 		</testsuite>
 	</testsuites>
 
-	<filter>
-		<whitelist>
+	<coverage>
+		<include>
 			<directory suffix=".php">lib</directory>
-		</whitelist>
-	</filter>
+		</include>
+	</coverage>
 </phpunit>

@@ -1,24 +1,39 @@
 <?php
+/**
+ * Custom reflector for WordPress hooks, on nikic/php-parser 5.
+ *
+ * @package WP_Parser
+ */
 
 namespace WP_Parser;
 
-use phpDocumentor\Reflection\BaseReflector;
-use PHPParser_PrettyPrinter_Default;
+use PhpParser\Node;
 
-/**
- * Custom reflector for WordPress hooks.
- */
-class Hook_Reflector extends BaseReflector {
+class Hook_Reflector {
+
+	/** @var Node\Expr\FuncCall */
+	protected $node;
+	protected $namespace;
+	protected $aliases;
+
+	public function __construct( Node\Expr\FuncCall $node, $namespace = 'global', array $aliases = array() ) {
+		$this->node      = $node;
+		$this->namespace = $namespace;
+		$this->aliases   = $aliases;
+	}
 
 	/**
 	 * @return string
 	 */
 	public function getName() {
-		$printer = new PHPParser_PrettyPrinter_Default;
+		$printer = new Pretty_Printer();
+
 		return $this->cleanupName( $printer->prettyPrintExpr( $this->node->args[0]->value ) );
 	}
 
 	/**
+	 * Normalize a hook name expression to the documented form.
+	 *
 	 * @param string $name
 	 *
 	 * @return string
@@ -60,6 +75,7 @@ class Hook_Reflector extends BaseReflector {
 	 */
 	public function getType() {
 		$type = 'filter';
+
 		switch ( (string) $this->node->name ) {
 			case 'do_action':
 				$type = 'action';
@@ -73,7 +89,7 @@ class Hook_Reflector extends BaseReflector {
 			case 'apply_filters_ref_array':
 				$type = 'filter_reference';
 				break;
-			case 'apply_filters_deprecated';
+			case 'apply_filters_deprecated':
 				$type = 'filter_deprecated';
 				break;
 		}
@@ -85,15 +101,31 @@ class Hook_Reflector extends BaseReflector {
 	 * @return array
 	 */
 	public function getArgs() {
-		$printer = new Pretty_Printer;
+		$printer = new Pretty_Printer();
 		$args    = array();
+
 		foreach ( $this->node->args as $arg ) {
 			$args[] = $printer->prettyPrintArg( $arg );
 		}
 
-		// Skip the filter name
+		// Skip the hook name.
 		array_shift( $args );
 
 		return $args;
+	}
+
+	public function getLineNumber() {
+		return $this->node->getStartLine();
+	}
+
+	public function getNode() {
+		return $this->node;
+	}
+
+	/**
+	 * @return Docblock_Adapter|null
+	 */
+	public function getDocBlock() {
+		return Docblock_Adapter::from_node( $this->node, $this->namespace, $this->aliases );
 	}
 }

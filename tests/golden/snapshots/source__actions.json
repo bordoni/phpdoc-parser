@@ -1,0 +1,486 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "actions.php",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "do_action",
+                    "line": 15,
+                    "end_line": 15
+                },
+                {
+                    "name": "do_action",
+                    "line": 29,
+                    "end_line": 29
+                },
+                {
+                    "name": "do_action",
+                    "line": 43,
+                    "end_line": 43
+                },
+                {
+                    "name": "do_action",
+                    "line": 55,
+                    "end_line": 55
+                },
+                {
+                    "name": "do_action",
+                    "line": 67,
+                    "end_line": 67
+                },
+                {
+                    "name": "do_action",
+                    "line": 79,
+                    "end_line": 79
+                },
+                {
+                    "name": "do_action",
+                    "line": 92,
+                    "end_line": 92
+                },
+                {
+                    "name": "do_action",
+                    "line": 105,
+                    "end_line": 105
+                },
+                {
+                    "name": "do_action",
+                    "line": 118,
+                    "end_line": 118
+                },
+                {
+                    "name": "do_action",
+                    "line": 120,
+                    "end_line": 120
+                },
+                {
+                    "name": "do_action",
+                    "line": 121,
+                    "end_line": 121
+                },
+                {
+                    "name": "do_action",
+                    "line": 122,
+                    "end_line": 122
+                }
+            ]
+        },
+        "hooks": [
+            {
+                "name": "good_doc_static_action",
+                "line": 15,
+                "end_line": 15,
+                "type": "action",
+                "arguments": [
+                    "$option",
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a well documented action.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "good_doc_dynamic_action_{$option}",
+                "line": 29,
+                "end_line": 29,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a well documented dynamic action.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "good_doc_double_quotes_dynamic_action_{$option}",
+                "line": 43,
+                "end_line": 43,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a well documented dynamic action.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_since_static_action",
+                "line": 55,
+                "end_line": 55,
+                "type": "action",
+                "arguments": [
+                    "$option",
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is an action missing the \"since\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_since_dynamic_action_{$option}",
+                "line": 67,
+                "end_line": 67,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a dynamic action missing the \"since\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_since_double_quotes_dynamic_action_{$option}",
+                "line": 79,
+                "end_line": 79,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a dynamic action missing the \"since\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The old option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$old_value"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_param_static_action",
+                "line": 92,
+                "end_line": 92,
+                "type": "action",
+                "arguments": [
+                    "$option",
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is an action missing a \"param\" line.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_param_dynamic_action_{$option}",
+                "line": 105,
+                "end_line": 105,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a well documented dynamic action.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "missing_param_double_quotes_dynamic_action_{$option}",
+                "line": 118,
+                "end_line": 118,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "This is a well documented dynamic action.",
+                    "long_description": "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>",
+                    "tags": [
+                        {
+                            "name": "since",
+                            "content": "2.9.0"
+                        },
+                        {
+                            "name": "param",
+                            "content": "Name of the option to update.",
+                            "types": [
+                                "string"
+                            ],
+                            "variable": "$option"
+                        },
+                        {
+                            "name": "param",
+                            "content": "The new option value.",
+                            "types": [
+                                "mixed"
+                            ],
+                            "variable": "$value"
+                        }
+                    ]
+                }
+            },
+            {
+                "name": "no_doc_static_action",
+                "line": 120,
+                "end_line": 120,
+                "type": "action",
+                "arguments": [
+                    "$option",
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "no_doc_dynamic_action_{$option}",
+                "line": 121,
+                "end_line": 121,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "no_doc_double_quotes_dymanic_action_{$option}",
+                "line": 122,
+                "end_line": 122,
+                "type": "action",
+                "arguments": [
+                    "$old_value",
+                    "$value"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

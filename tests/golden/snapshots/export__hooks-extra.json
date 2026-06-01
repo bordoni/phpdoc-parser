@@ -1,0 +1,244 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "hooks-extra.inc",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "do_action",
+                    "line": 6,
+                    "end_line": 6
+                },
+                {
+                    "name": "do_action",
+                    "line": 7,
+                    "end_line": 7
+                },
+                {
+                    "name": "do_action_ref_array",
+                    "line": 8,
+                    "end_line": 8
+                },
+                {
+                    "name": "do_action_deprecated",
+                    "line": 9,
+                    "end_line": 9
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 11,
+                    "end_line": 11
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 12,
+                    "end_line": 12
+                },
+                {
+                    "name": "apply_filters_ref_array",
+                    "line": 13,
+                    "end_line": 13
+                },
+                {
+                    "name": "apply_filters_deprecated",
+                    "line": 14,
+                    "end_line": 14
+                },
+                {
+                    "name": "apply_filters",
+                    "line": 16,
+                    "end_line": 16
+                },
+                {
+                    "name": "do_action",
+                    "line": 18,
+                    "end_line": 18
+                },
+                {
+                    "name": "do_action",
+                    "line": 19,
+                    "end_line": 19
+                },
+                {
+                    "name": "do_action",
+                    "line": 20,
+                    "end_line": 20
+                }
+            ]
+        },
+        "hooks": [
+            {
+                "name": "simple_action",
+                "line": 6,
+                "end_line": 6,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "Comprehensive hook variants.",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "action_with_args",
+                "line": 7,
+                "end_line": 7,
+                "type": "action",
+                "arguments": [
+                    "$a",
+                    "$b"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "action_ref",
+                "line": 8,
+                "end_line": 8,
+                "type": "action_reference",
+                "arguments": [
+                    "array(&$x)"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "deprecated_action",
+                "line": 9,
+                "end_line": 9,
+                "type": "action_deprecated",
+                "arguments": [
+                    "array($y)",
+                    "'5.0.0'",
+                    "'new_action'"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "simple_filter",
+                "line": 11,
+                "end_line": 11,
+                "type": "filter",
+                "arguments": [
+                    "$value"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "filter_with_args",
+                "line": 12,
+                "end_line": 12,
+                "type": "filter",
+                "arguments": [
+                    "$value",
+                    "$a",
+                    "$b"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "filter_ref",
+                "line": 13,
+                "end_line": 13,
+                "type": "filter_reference",
+                "arguments": [
+                    "array($value, &$x)"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "deprecated_filter",
+                "line": 14,
+                "end_line": 14,
+                "type": "filter_deprecated",
+                "arguments": [
+                    "array($value)",
+                    "'5.0.0'",
+                    "'new_filter'"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "assigned_filter",
+                "line": 16,
+                "end_line": 16,
+                "type": "filter",
+                "arguments": [
+                    "$default"
+                ],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "interpolated_{$dynamic}_action",
+                "line": 18,
+                "end_line": 18,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "{$variable_hook}",
+                "line": 19,
+                "end_line": 19,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            },
+            {
+                "name": "dynamic_{$suffix}",
+                "line": 20,
+                "end_line": 20,
+                "type": "action",
+                "arguments": [],
+                "doc": {
+                    "description": "",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

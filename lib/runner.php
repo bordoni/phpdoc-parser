@@ -2,13 +2,6 @@
 
 namespace WP_Parser;
 
-use phpDocumentor\Reflection\BaseReflector;
-use phpDocumentor\Reflection\ClassReflector\MethodReflector;
-use phpDocumentor\Reflection\ClassReflector\PropertyReflector;
-use phpDocumentor\Reflection\FunctionReflector;
-use phpDocumentor\Reflection\FunctionReflector\ArgumentReflector;
-use phpDocumentor\Reflection\ReflectionAbstract;
-
 /**
  * @param string $directory
  *
@@ -189,7 +182,7 @@ function fix_newlines( $text ) {
 }
 
 /**
- * @param BaseReflector|ReflectionAbstract $element
+ * @param object $element A reflector exposing getDocBlock().
  *
  * @return array
  */
@@ -269,7 +262,7 @@ function export_hooks( array $hooks ) {
 }
 
 /**
- * @param ArgumentReflector[] $arguments
+ * @param Argument_Reflector[] $arguments
  *
  * @return array
  */
@@ -288,7 +281,7 @@ function export_arguments( array $arguments ) {
 }
 
 /**
- * @param PropertyReflector[] $properties
+ * @param Property_Reflector[] $properties
  *
  * @return array
  */
@@ -312,7 +305,7 @@ function export_properties( array $properties ) {
 }
 
 /**
- * @param MethodReflector[] $methods
+ * @param Method_Reflector[] $methods
  *
  * @return array
  */
@@ -366,7 +359,7 @@ function export_uses( array $uses ) {
 
 	foreach ( $uses as $type => $used_elements ) {
 
-		/** @var MethodReflector|FunctionReflector $element */
+		/** @var Method_Call_Reflector|Function_Call_Reflector $element */
 		foreach ( $used_elements as $element ) {
 
 			$name = $element->getName();

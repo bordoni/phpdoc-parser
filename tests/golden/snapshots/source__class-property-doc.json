@@ -1,0 +1,308 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "class-property-doc.php",
+        "root": "{{ROOT}}",
+        "classes": [
+            {
+                "name": "Bad_Property_Doc",
+                "namespace": "global",
+                "line": 14,
+                "end_line": 91,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [
+                    {
+                        "name": "$private_good_doc_property",
+                        "line": 23,
+                        "end_line": 23,
+                        "default": "'foo'",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "Stores the list of errors.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$private_missing_description_property",
+                        "line": 30,
+                        "end_line": 30,
+                        "default": "'string'",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$private_missing_since_property",
+                        "line": 38,
+                        "end_line": 38,
+                        "default": "'foo'",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "Stores the list of errors.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$private_missing_var_property",
+                        "line": 46,
+                        "end_line": 46,
+                        "default": "'foo'",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "Stores the list of errors.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "private"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$private_missing_access_property",
+                        "line": 52,
+                        "end_line": 52,
+                        "default": "'string'",
+                        "static": false,
+                        "visibility": "private",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$public_good_doc_property",
+                        "line": 61,
+                        "end_line": 61,
+                        "default": "'foo'",
+                        "static": false,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "Stores the list of errors.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$public_missing_description_property",
+                        "line": 68,
+                        "end_line": 68,
+                        "default": "'string'",
+                        "static": false,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$public_missing_since_property",
+                        "line": 76,
+                        "end_line": 76,
+                        "default": "'foo'",
+                        "static": false,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "Stores the list of errors.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$public_missing_var_property",
+                        "line": 84,
+                        "end_line": 84,
+                        "default": "'foo'",
+                        "static": false,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "Stores the list of errors.",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "access",
+                                    "content": "public"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "name": "$public_missing_access_property",
+                        "line": 90,
+                        "end_line": 90,
+                        "default": "'string'",
+                        "static": false,
+                        "visibility": "public",
+                        "doc": {
+                            "description": "",
+                            "long_description": "",
+                            "tags": [
+                                {
+                                    "name": "since",
+                                    "content": "2.1.0"
+                                },
+                                {
+                                    "name": "var",
+                                    "content": "",
+                                    "types": [
+                                        "array"
+                                    ],
+                                    "variable": ""
+                                }
+                            ]
+                        }
+                    }
+                ],
+                "methods": [],
+                "doc": {
+                    "description": "WordPress Error class.",
+                    "long_description": "<p>Container for checking for WordPress errors and error messages. Return WP_Error and use {@link is_wp_error()} to check if this class is returned.<br>Many core WordPress functions pass this class in the event of an error and if not handled properly will result in code errors.</p>",
+                    "tags": [
+                        {
+                            "name": "package",
+                            "content": "WordPress"
+                        },
+                        {
+                            "name": "since",
+                            "content": "2.1.0"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+]

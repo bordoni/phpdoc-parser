@@ -1,0 +1,123 @@
+[
+    {
+        "file": {
+            "description": "",
+            "long_description": "",
+            "tags": []
+        },
+        "path": "constants-includes.inc",
+        "root": "{{ROOT}}",
+        "uses": {
+            "functions": [
+                {
+                    "name": "dirname",
+                    "line": 6,
+                    "end_line": 6
+                },
+                {
+                    "name": "define",
+                    "line": 11,
+                    "end_line": 11
+                },
+                {
+                    "name": "define",
+                    "line": 12,
+                    "end_line": 12
+                }
+            ]
+        },
+        "includes": [
+            {
+                "name": "",
+                "line": 6,
+                "type": "Require Once"
+            },
+            {
+                "name": "helper.php",
+                "line": 7,
+                "type": "Include"
+            },
+            {
+                "name": "",
+                "line": 8,
+                "type": "Require"
+            },
+            {
+                "name": "once.php",
+                "line": 9,
+                "type": "Include Once"
+            },
+            {
+                "name": "inside-function.php",
+                "line": 19,
+                "type": "Include"
+            }
+        ],
+        "constants": [
+            {
+                "name": "MY_CONSTANT",
+                "line": 11,
+                "value": "42"
+            },
+            {
+                "name": "MY_STRING",
+                "line": 12,
+                "value": "'hello'"
+            },
+            {
+                "name": "MY_CONST_KEYWORD",
+                "line": 13,
+                "value": "'world'"
+            },
+            {
+                "name": "INSIDE_FUNC",
+                "line": 20,
+                "value": "true"
+            }
+        ],
+        "functions": [
+            {
+                "name": "uses_constant",
+                "namespace": "global",
+                "aliases": [],
+                "line": 18,
+                "end_line": 22,
+                "arguments": [],
+                "doc": {
+                    "description": "A function with an include and a define inside.",
+                    "long_description": "",
+                    "tags": []
+                },
+                "hooks": [],
+                "uses": {
+                    "functions": [
+                        {
+                            "name": "define",
+                            "line": 20,
+                            "end_line": 20
+                        }
+                    ]
+                }
+            }
+        ],
+        "classes": [
+            {
+                "name": "Has_Const",
+                "namespace": "global",
+                "line": 27,
+                "end_line": 29,
+                "final": false,
+                "abstract": false,
+                "extends": "",
+                "implements": [],
+                "properties": [],
+                "methods": [],
+                "doc": {
+                    "description": "A class with a constant.",
+                    "long_description": "",
+                    "tags": []
+                }
+            }
+        ]
+    }
+]

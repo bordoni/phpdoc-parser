@@ -1,51 +1,64 @@
 <?php
-
 /**
- * A reflection class for a function call.
+ * A reflection of a function-call expression, on nikic/php-parser 5.
+ *
+ * @package WP_Parser
  */
 
 namespace WP_Parser;
 
-use phpDocumentor\Reflection\BaseReflector;
+use PhpParser\Node;
 
-/**
- * A reflection of a function call expression.
- */
-class Function_Call_Reflector extends BaseReflector {
+class Function_Call_Reflector {
+
+	/** @var Node\Expr\FuncCall */
+	protected $node;
+
+	public function __construct( Node\Expr\FuncCall $node ) {
+		$this->node = $node;
+	}
 
 	/**
-	 * Returns the name for this Reflector instance.
+	 * The called function's name.
+	 *
+	 * Reproduces the legacy resolution: an unqualified name that resolves to itself
+	 * is a global-fallback call and stays bare (count, apply_filters); a fully-
+	 * qualified, qualified, or use-function-imported name resolves to a leading-
+	 * backslash FQN (\do_action, \Other\helper, \My\Plugin\Sub\thing).
 	 *
 	 * @return string
 	 */
 	public function getName() {
-		if ( isset( $this->node->namespacedName ) ) {
-			return '\\' . implode( '\\', $this->node->namespacedName->parts );
+		$name = $this->node->name;
+
+		if ( $name instanceof Node\Name ) {
+			$resolved = $name->getAttribute( 'resolvedName' );
+
+			// Unqualified names resolving to themselves stay bare (global fallback).
+			if ( $name->isUnqualified()
+				&& ( null === $resolved || $resolved->toString() === $name->toString() ) ) {
+				return $name->toString();
+			}
+
+			if ( null !== $resolved ) {
+				return '\\' . $resolved->toString();
+			}
+
+			return $name->toString();
 		}
 
-		$shortName = $this->getShortName();
-
-		if ( is_a( $shortName, 'PHPParser_Node_Name_FullyQualified' ) ) {
-			return '\\' . (string) $shortName;
+		if ( $name instanceof Node\Expr\Variable && is_string( $name->name ) ) {
+			return $name->name;
 		}
 
-		if ( is_a( $shortName, 'PHPParser_Node_Name' ) ) {
-			return (string) $shortName;
-		}
+		return Reflector_Helpers::pretty_print_expr( $name );
+	}
 
-		/** @var \PHPParser_Node_Expr_ArrayDimFetch $shortName */
-		if ( is_a( $shortName, 'PHPParser_Node_Expr_ArrayDimFetch' ) ) {
-			$var = $shortName->var->name;
-			$dim = $shortName->dim->name->parts[0];
+	public function getLineNumber() {
+		return $this->node->getStartLine();
+	}
 
-			return "\${$var}[{$dim}]";
-		}
-
-		/** @var \PHPParser_Node_Expr_Variable $shortName */
-		if ( is_a( $shortName, 'PHPParser_Node_Expr_Variable' ) ) {
-			return $shortName->name;
-		}
-
-		return (string) $shortName;
+	public function getNode() {
+		return $this->node;
 	}
 }
